@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgqvjob73qmeq"]
+
+[ext_resource type="Script" uid="uid://dvxdd6umpfhyb" path="res://Player/Scripts/player.gd" id="1_hoak5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8juk"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_hoak5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_y8juk")
