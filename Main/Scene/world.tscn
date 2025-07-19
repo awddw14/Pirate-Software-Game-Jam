@@ -1,3 +1,24 @@
-[gd_scene format=3 uid="uid://w0oq4ltku8q4"]
+[gd_scene load_steps=3 format=3 uid="uid://w0oq4ltku8q4"]
+
+[ext_resource type="PackedScene" uid="uid://cgqvjob73qmeq" path="res://Player/Scene/player.tscn" id="1_b8kj6"]
+[ext_resource type="Texture2D" uid="uid://c4v8t4558345m" path="res://icon.svg" id="2_w51h7"]
 
 [node name="World" type="Node2D"]
+
+[node name="bg_test" type="ColorRect" parent="."]
+offset_left = -1484.0
+offset_top = -1201.0
+offset_right = 1819.0
+offset_bottom = 1480.0
+
+[node name="Player" parent="." instance=ExtResource("1_b8kj6")]
+
+[node name="test" type="Sprite2D" parent="."]
+position = Vector2(282, 201)
+texture = ExtResource("2_w51h7")
+
+[node name="test2" type="Sprite2D" parent="."]
+position = Vector2(-110, 279)
+texture = ExtResource("2_w51h7")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
