@@ -1,14 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgqvjob73qmeq"]
+[gd_scene load_steps=9 format=3 uid="uid://cgqvjob73qmeq"]
 
 [ext_resource type="Script" uid="uid://dvxdd6umpfhyb" path="res://Player/Scripts/player.gd" id="1_hoak5"]
+[ext_resource type="PackedScene" uid="uid://b6pq12fnvqmrl" path="res://Player/Scene/bullet.tscn" id="2_4qt7j"]
 [ext_resource type="Texture2D" uid="uid://c4v8t4558345m" path="res://icon.svg" id="2_nq6wp"]
 [ext_resource type="Script" uid="uid://cogkldyyuq5js" path="res://Player/Scripts/cam.gd" id="3_x474h"]
+[ext_resource type="Texture2D" uid="uid://dm56u7qpm3gf1" path="res://assets/Light_Shadow.webp" id="4_dmgeq"]
+[ext_resource type="Texture2D" uid="uid://pjee2k2q1rkr" path="res://assets/Blunderbuss side.png" id="5_gssft"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y8juk"]
 size = Vector2(117, 119)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_x474h"]
+radius = 530.0
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_hoak5")
+bullet_scene = ExtResource("2_4qt7j")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(5, 5)
+color = Color(0.485703, 0.485704, 0.485703, 1)
+shadow_enabled = true
+texture = ExtResource("4_dmgeq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_nq6wp")
@@ -18,4 +31,24 @@ position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_y8juk")
 
 [node name="cam" type="Camera2D" parent="."]
+zoom = Vector2(0.6, 0.6)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
 script = ExtResource("3_x474h")
+
+[node name="touch_sense" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="touch_sense"]
+shape = SubResource("CircleShape2D_x474h")
+
+[node name="weapon" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(2, 2)
+texture = ExtResource("5_gssft")
+
+[node name="pivot" type="Marker2D" parent="weapon"]
+position = Vector2(17, 0.5)
+
+[connection signal="body_entered" from="touch_sense" to="." method="_on_touch_sense_body_entered"]
+[connection signal="body_exited" from="touch_sense" to="." method="_on_touch_sense_body_exited"]

@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddsr50itu6o7x"]
+
+[ext_resource type="Script" uid="uid://df4lwdxan8y3a" path="res://Main/Scripts/touch_sense_ui.gd" id="1_og2ng"]
+
+[node name="Touch_Sense_UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -977.0
+offset_bottom = -586.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_og2ng")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 135.0
+offset_bottom = 23.0
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 100
+text = "Enviroment temp"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+self_modulate = Color(0, 1, 0, 1)
+layout_mode = 0
+offset_top = 29.0
+offset_right = 170.0
+offset_bottom = 56.0
+max_value = 10.0
+step = 1.0
+value = 5.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
