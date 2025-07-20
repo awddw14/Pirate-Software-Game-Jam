@@ -53,6 +53,14 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 100
 text = "YOU WON"
 
+[node name="current_sense" type="Label" parent="UI"]
+self_modulate = Color(0, 0, 0, 1)
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(0.3, 0.3)
+theme_override_font_sizes/font_size = 100
+text = "Current Sense selected:"
+
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["Monster"]]
 modulate = Color(1, 0, 0, 1)
 position = Vector2(787, 343)
@@ -68,7 +76,7 @@ shape = SubResource("RectangleShape2D_leevy")
 occluder = SubResource("OccluderPolygon2D_leevy")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0, 0, 0.4, 1)
+color = Color(0.133, 0.133, 0.133, 1)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 energy = 0.3

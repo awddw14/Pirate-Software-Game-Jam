@@ -4,10 +4,14 @@ extends Node2D
 
 @onready var won: Label = $UI/won
 @onready var canvas_modulate: CanvasModulate = $CanvasModulate
+@onready var current_sense_label: Label = $UI/current_sense
 
 func _ready() -> void:
 	won.hide()
 
+func update_world_ui():
+	if current_sense_label != null:
+		current_sense_label.text = "Current Sense selected: " + Global.current_sense
 
 func _process(_delta: float) -> void:
 	if Global.hit:

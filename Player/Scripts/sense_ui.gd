@@ -4,6 +4,7 @@ extends Control
 
 @onready var touch_sense_ui: Control = $"../Touch_Sense_UI"
 @onready var player: CharacterBody2D = $"../../Player"
+@onready var world: Node2D = $"../.."
 
 func _ready() -> void:
 	update_ui()
@@ -24,6 +25,7 @@ func _on_hear_pressed() -> void:
 
 func update_ui():
 	player.update_sense()
+	world.update_world_ui()
 	if Global.current_sense == "Touch":
 		touch_sense_ui.show()
 	else :

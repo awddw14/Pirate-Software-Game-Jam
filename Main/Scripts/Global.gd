@@ -6,4 +6,4 @@ var env_temp: int
 var temp_change: bool = false
 
 
-var current_sense: String
+var current_sense: String = ""
