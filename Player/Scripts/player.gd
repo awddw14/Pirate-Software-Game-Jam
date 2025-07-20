@@ -9,6 +9,8 @@ var gun_equip: bool = false
 @onready var cam: Camera2D = $cam
 @onready var light: PointLight2D = $PointLight2D
 @onready var weapon: Sprite2D = $weapon
+@onready var ap: AnimationPlayer = $ap
+var is_sight: bool = false
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot") and gun_equip:
@@ -37,8 +39,17 @@ func _physics_process(_delta: float) -> void:
 
 func update_sense():
 	if Global.current_sense == "Sight":
+		is_sight = true
+		ap.play("Sight_Fade_1")
+		await ap.animation_finished
 		light.scale = Vector2(8,8)
+		light.color = Color(1.0, 1.0, 1.0)
 	else :
+		if is_sight:
+			ap.play("Sight_Fade_2")
+			await ap.animation_finished
+			is_sight = false
+		light.color = Color(0.5, 0.5, 0.5)
 		light.scale = Vector2(3,3)
 
 func shoot():

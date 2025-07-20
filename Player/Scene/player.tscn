@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgqvjob73qmeq"]
+[gd_scene load_steps=13 format=3 uid="uid://cgqvjob73qmeq"]
 
 [ext_resource type="Script" uid="uid://dvxdd6umpfhyb" path="res://Player/Scripts/player.gd" id="1_hoak5"]
 [ext_resource type="PackedScene" uid="uid://b6pq12fnvqmrl" path="res://Player/Scene/bullet.tscn" id="2_4qt7j"]
@@ -13,14 +13,107 @@ size = Vector2(117, 119)
 [sub_resource type="CircleShape2D" id="CircleShape2D_x474h"]
 radius = 530.0
 
+[sub_resource type="Animation" id="Animation_4qt7j"]
+resource_name = "Sight_Fade_1"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3, 3), Vector2(8, 8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.5, 0.5, 0.5, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_i0tdu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.5, 0.5, 0.5, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_w5akg"]
+resource_name = "Sight_Fade_2"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(8, 8), Vector2(3, 3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.5, 0.5, 0.5, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w5akg"]
+_data = {
+&"RESET": SubResource("Animation_i0tdu"),
+&"Sight_Fade_1": SubResource("Animation_4qt7j"),
+&"Sight_Fade_2": SubResource("Animation_w5akg")
+}
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_hoak5")
 bullet_scene = ExtResource("2_4qt7j")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-scale = Vector2(5, 5)
-color = Color(0.485703, 0.485704, 0.485703, 1)
+scale = Vector2(3, 3)
+color = Color(0.5, 0.5, 0.5, 1)
+energy = 0.6
 shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.0
 texture = ExtResource("4_dmgeq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -48,6 +141,11 @@ texture = ExtResource("5_gssft")
 
 [node name="pivot" type="Marker2D" parent="weapon"]
 position = Vector2(17, 0.5)
+
+[node name="ap" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_w5akg")
+}
 
 [connection signal="body_entered" from="touch_sense" to="." method="_on_touch_sense_body_entered"]
 [connection signal="body_exited" from="touch_sense" to="." method="_on_touch_sense_body_exited"]
