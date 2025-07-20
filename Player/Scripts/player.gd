@@ -22,6 +22,7 @@ func _input(event: InputEvent) -> void:
 func _ready() -> void:
 	light.scale = Vector2(2,2)
 	weapon.hide()
+	self.add_to_group("Player")
 
 func _process(_delta: float) -> void:
 	if gun_equip:

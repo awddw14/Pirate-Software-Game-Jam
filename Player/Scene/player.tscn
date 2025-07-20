@@ -103,7 +103,7 @@ _data = {
 &"Sight_Fade_2": SubResource("Animation_w5akg")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_hoak5")
 bullet_scene = ExtResource("2_4qt7j")
 

@@ -23,4 +23,13 @@ func _process(_delta: float) -> void:
 	elif Global.current_sense == "Touch":
 		canvas_modulate.color = Color(0.12, 0.07, 0.07, 1.0)
 	else:
-		canvas_modulate.color = Color(0.15, 0.15, 0.15, 1.0)
+		canvas_modulate.color = Color(0.0, 0.0, 0.0, 0.8) #Color(0.15, 0.15, 0.15, 1.0)
+
+
+
+func _on_gun_inventory_all_parts() -> void:
+	$Player.equip_weapon()
+
+
+func _on_item_collected() -> void:
+	$UI/Gun_Inventory.update_gun_parts_ui()
