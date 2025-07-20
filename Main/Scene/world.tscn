@@ -82,7 +82,7 @@ shape = SubResource("RectangleShape2D_leevy")
 occluder = SubResource("OccluderPolygon2D_leevy")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.133, 0.133, 0.133, 1)
+color = Color(0.15, 0.15, 0.15, 1)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-energy = 0.3
+energy = 0.4

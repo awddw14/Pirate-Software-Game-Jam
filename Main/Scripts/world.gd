@@ -23,4 +23,4 @@ func _process(_delta: float) -> void:
 	elif Global.current_sense == "Touch":
 		canvas_modulate.color = Color(0.12, 0.07, 0.07, 1.0)
 	else:
-		canvas_modulate.color = Color(0.133, 0.133, 0.133, 1.0)
+		canvas_modulate.color = Color(0.15, 0.15, 0.15, 1.0)
