@@ -17,6 +17,7 @@ script = ExtResource("1_ypnme")
 layout_mode = 0
 offset_right = 150.0
 offset_bottom = 150.0
+mouse_filter = 1
 theme_override_font_sizes/font_size = 50
 text = "Sight
 "
@@ -30,6 +31,7 @@ offset_left = -376.0
 offset_right = -221.0
 offset_bottom = 150.0
 grow_horizontal = 2
+mouse_filter = 1
 theme_override_font_sizes/font_size = 50
 text = "Touch"
 
@@ -42,6 +44,7 @@ offset_left = -752.0
 offset_right = -602.0
 offset_bottom = 150.0
 grow_horizontal = 0
+mouse_filter = 1
 theme_override_font_sizes/font_size = 50
 text = "Hear"
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://w0oq4ltku8q4"]
+[gd_scene load_steps=9 format=3 uid="uid://w0oq4ltku8q4"]
 
 [ext_resource type="Script" uid="uid://cf78yxghjh26e" path="res://Main/Scripts/world.gd" id="1_0ivwq"]
 [ext_resource type="PackedScene" uid="uid://cgqvjob73qmeq" path="res://Player/Scene/player.tscn" id="1_b8kj6"]
 [ext_resource type="Texture2D" uid="uid://c4v8t4558345m" path="res://icon.svg" id="2_w51h7"]
 [ext_resource type="PackedScene" uid="uid://ddsr50itu6o7x" path="res://Main/Scene/touch_sense_ui.tscn" id="3_leevy"]
 [ext_resource type="PackedScene" uid="uid://cjsx1gxvmgrcm" path="res://Player/Scene/sense_ui.tscn" id="3_x3rxd"]
+[ext_resource type="PackedScene" uid="uid://cvcgq6d6dlntw" path="res://Main/Scene/gun_inventory.tscn" id="5_aq6cu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_leevy"]
 size = Vector2(109, 115)
@@ -20,6 +21,7 @@ offset_left = -1484.0
 offset_top = -1201.0
 offset_right = 1819.0
 offset_bottom = 1480.0
+mouse_filter = 1
 
 [node name="Player" parent="." instance=ExtResource("1_b8kj6")]
 
@@ -28,14 +30,8 @@ offset_bottom = 1480.0
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Touch_Sense_UI" parent="UI" instance=ExtResource("3_leevy")]
-offset_top = 460.0
-offset_bottom = -115.0
-
-[node name="Sense_UI" parent="UI" instance=ExtResource("3_x3rxd")]
-offset_left = 432.0
-offset_top = 527.0
-offset_right = 432.0
-offset_bottom = 527.0
+offset_top = 67.0
+offset_bottom = -508.0
 
 [node name="won" type="Label" parent="UI"]
 self_modulate = Color(0, 1, 0, 1)
@@ -50,6 +46,7 @@ offset_right = 258.0
 offset_bottom = 17.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme_override_font_sizes/font_size = 100
 text = "YOU WON"
 
@@ -58,11 +55,20 @@ self_modulate = Color(0, 0, 0, 1)
 offset_right = 40.0
 offset_bottom = 23.0
 scale = Vector2(0.3, 0.3)
+mouse_filter = 1
 theme_override_font_sizes/font_size = 100
 text = "Current Sense selected:"
 
+[node name="Gun_Inventory" parent="UI" instance=ExtResource("5_aq6cu")]
+
+[node name="Sense_UI" parent="UI" instance=ExtResource("3_x3rxd")]
+offset_left = 432.0
+offset_top = 527.0
+offset_right = 432.0
+offset_bottom = 527.0
+
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["Monster"]]
-modulate = Color(1, 0, 0, 1)
+modulate = Color(1, 0.151344, 0.108333, 1)
 position = Vector2(787, 343)
 
 [node name="test2" type="Sprite2D" parent="CharacterBody2D"]
