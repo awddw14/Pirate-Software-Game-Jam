@@ -649,7 +649,6 @@ theme_override_font_sizes/font_size = 100
 text = "YOU WON"
 
 [node name="current_sense" type="Label" parent="UI"]
-self_modulate = Color(0, 0, 0, 1)
 offset_right = 40.0
 offset_bottom = 23.0
 scale = Vector2(0.3, 0.3)
@@ -689,29 +688,33 @@ scale = Vector2(0.15, 0.15)
 texture = ExtResource("6_lbp6c")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.05, 0.02, 0.022, 1)
 
-[node name="ammobox_item" parent="." instance=ExtResource("7_rx81u")]
+[node name="parts" type="Node2D" parent="."]
+position = Vector2(229, -51)
+
+[node name="ammobox_item" parent="parts" instance=ExtResource("7_rx81u")]
 position = Vector2(391, 237)
 icon = ExtResource("8_6y5d8")
 part_name = "Ammobox"
 
-[node name="bullet_item" parent="." instance=ExtResource("7_rx81u")]
+[node name="bullet_item" parent="parts" instance=ExtResource("7_rx81u")]
 position = Vector2(637, 116)
 icon = ExtResource("9_lbp6c")
 part_name = "Bullet"
 
-[node name="magazine_item" parent="." instance=ExtResource("7_rx81u")]
+[node name="magazine_item" parent="parts" instance=ExtResource("7_rx81u")]
 position = Vector2(48, 323)
 icon = ExtResource("10_eknjm")
 part_name = "Magazine"
 
-[node name="grenade_item" parent="." instance=ExtResource("7_rx81u")]
+[node name="grenade_item" parent="parts" instance=ExtResource("7_rx81u")]
 position = Vector2(437, -40)
 icon = ExtResource("11_r246a")
 part_name = "Grenade"
 
 [connection signal="all_parts" from="UI/Gun_Inventory" to="." method="_on_gun_inventory_all_parts"]
-[connection signal="collected" from="ammobox_item" to="." method="_on_item_collected"]
-[connection signal="collected" from="bullet_item" to="." method="_on_item_collected"]
-[connection signal="collected" from="magazine_item" to="." method="_on_item_collected"]
-[connection signal="collected" from="grenade_item" to="." method="_on_item_collected"]
+[connection signal="collected" from="parts/ammobox_item" to="." method="_on_item_collected"]
+[connection signal="collected" from="parts/bullet_item" to="." method="_on_item_collected"]
+[connection signal="collected" from="parts/magazine_item" to="." method="_on_item_collected"]
+[connection signal="collected" from="parts/grenade_item" to="." method="_on_item_collected"]

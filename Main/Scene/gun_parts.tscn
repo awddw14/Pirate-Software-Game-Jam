@@ -1,7 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctt2xkp8c1twc"]
+[gd_scene load_steps=7 format=3 uid="uid://ctt2xkp8c1twc"]
 
 [ext_resource type="Script" uid="uid://bwgyh7iu3ax8r" path="res://Main/Scripts/gun_parts.gd" id="1_5eh6r"]
 [ext_resource type="Texture2D" uid="uid://cxfvomce3remh" path="res://assets/gun_parts/ammobox.png" id="1_mav34"]
+[ext_resource type="Shader" uid="uid://dmsey8ophmxsn" path="res://Main/Scripts/gun_parts.gdshader" id="2_h1m38"]
+[ext_resource type="Texture2D" uid="uid://dm56u7qpm3gf1" path="res://assets/Light_Shadow.webp" id="4_w85rw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w85rw"]
+shader = ExtResource("2_h1m38")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 10.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uwkec"]
 radius = 17.5071
@@ -11,11 +21,15 @@ scale = Vector2(2, 2)
 script = ExtResource("1_5eh6r")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_w85rw")
 position = Vector2(3.8147e-06, 1.90735e-06)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_mav34")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_uwkec")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = ExtResource("4_w85rw")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

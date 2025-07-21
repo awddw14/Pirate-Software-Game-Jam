@@ -21,9 +21,9 @@ func _process(_delta: float) -> void:
 	if Global.current_sense == "Sight":
 		canvas_modulate.color = Color(0.08, 0.09, 0.15, 1.0)
 	elif Global.current_sense == "Touch":
-		canvas_modulate.color = Color(0.12, 0.07, 0.07, 1.0)
+		canvas_modulate.color = Color(0.0, 0.0, 0.0, 1.0) #Color(0.06, 0.035, 0.035, 1.0)
 	else:
-		canvas_modulate.color = Color(0.0, 0.0, 0.0, 0.8) #Color(0.15, 0.15, 0.15, 1.0)
+		canvas_modulate.color = Color(0.0, 0.0, 0.0, 1.0) #Color(0.15, 0.15, 0.15, 1.0)
 
 
 
