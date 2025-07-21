@@ -1,0 +1,134 @@
+[gd_scene load_steps=2 format=3 uid="uid://du70u5ltjl1xf"]
+
+[ext_resource type="Script" uid="uid://cpbu2ilokeyxq" path="res://Main/Scripts/code_game.gd" id="1_0j8d2"]
+
+[node name="Code_Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 15.0
+offset_right = 3.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_0j8d2")
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 566.0
+offset_top = 89.0
+offset_right = 752.0
+offset_bottom = 234.0
+scale = Vector2(0.8, 0.8)
+theme_override_font_sizes/font_size = 100
+text = "Exit"
+
+[node name="ColorRect" type="ColorRect" parent="Exit"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 186.0
+offset_bottom = 145.0
+mouse_filter = 1
+color = Color(1, 0, 0, 1)
+
+[node name="Code" type="Label" parent="."]
+layout_mode = 0
+offset_left = 198.0
+offset_right = 358.0
+offset_bottom = 96.0
+theme_override_font_sizes/font_size = 70
+text = "9999"
+
+[node name="ColorRect" type="ColorRect" parent="Code"]
+self_modulate = Color(0, 0, 1, 1)
+show_behind_parent = true
+layout_mode = 0
+offset_left = -9.0
+offset_right = 163.0
+offset_bottom = 85.0
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 87.0
+offset_right = 236.0
+offset_bottom = 679.0
+scale = Vector2(0.9, 0.9)
+columns = 3
+
+[node name="Button" type="Button" parent="GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "1"
+
+[node name="Button1" type="Button" parent="GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "2	"
+
+[node name="Button2" type="Button" parent="GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "3"
+
+[node name="Button3" type="Button" parent="GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "4"
+
+[node name="Button4" type="Button" parent="GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "5"
+
+[node name="Button5" type="Button" parent="GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "6"
+
+[node name="Button6" type="Button" parent="GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "7"
+
+[node name="Button7" type="Button" parent="GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "8"
+
+[node name="Button8" type="Button" parent="GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "9"
+
+[node name="Button9" type="Button" parent="GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "  0  "
+
+[node name="delete" type="Button" parent="GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "  <   "
+
+[node name="submit" type="Button" parent="GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "   *   "
+
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="GridContainer/Button" to="." method="_on_button_0_pressed"]
+[connection signal="pressed" from="GridContainer/Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="GridContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="GridContainer/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="GridContainer/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="GridContainer/Button5" to="." method="_on_button_5_pressed"]
+[connection signal="pressed" from="GridContainer/Button6" to="." method="_on_button_6_pressed"]
+[connection signal="pressed" from="GridContainer/Button7" to="." method="_on_button_7_pressed"]
+[connection signal="pressed" from="GridContainer/Button8" to="." method="_on_button_8_pressed"]
+[connection signal="pressed" from="GridContainer/Button9" to="." method="_on_button_9_pressed"]
+[connection signal="pressed" from="GridContainer/delete" to="." method="_on_delete_pressed"]
+[connection signal="pressed" from="GridContainer/submit" to="." method="_on_submit_pressed"]

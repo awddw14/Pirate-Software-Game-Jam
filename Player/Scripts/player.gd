@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal died
+
 @export var bullet_scene: PackedScene
 
 var speed: float = 300.0
@@ -40,18 +42,22 @@ func _process(_delta: float) -> void:
 		
 		if not crosshair_playing and target != null:
 			play_crosshair_anim()
+	
+	if Global.missed:
+		death()
 
 func _physics_process(_delta: float) -> void:
 	var input_vector: Vector2 = Vector2(Input.get_axis("move_left", "move_right"),Input.get_axis("move_up", "move_down")).normalized()
 	velocity = input_vector * speed
-	if input_vector.x < 0 or input_vector.y < 0:
-		anim.flip_h = true
-		anim.play("Walk")
-	elif input_vector.x > 0 or input_vector.y > 0:
-		anim.flip_h = false
-		anim.play("Walk")
-	elif velocity == Vector2(0,0):
-		anim.play("Idle")
+	if Global.missed == false:
+		if input_vector.x < 0 or input_vector.y < 0:
+			anim.flip_h = true
+			anim.play("Walk")
+		elif input_vector.x > 0 or input_vector.y > 0:
+			anim.flip_h = false
+			anim.play("Walk")
+		elif velocity == Vector2(0,0):
+			anim.play("Idle")
 	move_and_slide()
 
 func update_sense():
@@ -91,13 +97,18 @@ func play_crosshair_anim():
 	await ap.animation_finished
 	crosshair_playing = false
 
+func death():
+	anim.play("death")
+	await anim.animation_finished
+	queue_free()
+	died.emit()
 
 func _on_touch_sense_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Monster"):
-		Global.temp_change = true
+		Global.temp_change = body.env_temp
 		target = body
 
 func _on_touch_sense_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Monster"):
-		Global.temp_change = false
+		Global.temp_change = ""
 		crosshair.hide()

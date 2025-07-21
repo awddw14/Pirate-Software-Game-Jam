@@ -1,0 +1,77 @@
+[gd_scene load_steps=3 format=3 uid="uid://clmobkyvnafmo"]
+
+[ext_resource type="Script" uid="uid://b5sfbgui4g47f" path="res://Main/Scripts/monster_book.gd" id="1_y1klk"]
+[ext_resource type="Texture2D" uid="uid://c4v8t4558345m" path="res://icon.svg" id="2_a04o5"]
+
+[node name="MonsterBook" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y1klk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -280.0
+offset_right = 280.0
+offset_bottom = 560.0
+grow_horizontal = 2
+color = Color(0.901961, 0.745098, 0, 1)
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(757, 140)
+texture = ExtResource("2_a04o5")
+
+[node name="Pic" type="Label" parent="Icon"]
+self_modulate = Color(0, 0, 1, 1)
+offset_left = -45.0
+offset_top = -98.0
+offset_right = 297.0
+offset_bottom = 39.0
+scale = Vector2(0.25, 0.25)
+theme_override_font_sizes/font_size = 100
+text = "Picture"
+
+[node name="Name" type="Label" parent="."]
+self_modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 454.0
+offset_top = 1.0
+offset_right = 1367.0
+offset_bottom = 138.0
+scale = Vector2(0.25, 0.25)
+theme_override_font_sizes/font_size = 100
+text = "Name: Placeholder"
+
+[node name="Facts" type="Label" parent="."]
+self_modulate = Color(0, 0.564706, 0, 1)
+layout_mode = 0
+offset_left = 305.0
+offset_top = 221.0
+offset_right = 1782.0
+offset_bottom = 781.0
+scale = Vector2(0.25, 0.25)
+theme_override_font_sizes/font_size = 100
+text = "Typical behavior:
+- Loud Footsteps, 
+- light flickering, 
+- cold enviroment"
+
+[node name="description" type="Label" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 307.0
+offset_top = 362.0
+offset_right = 1639.0
+offset_bottom = 919.0
+scale = Vector2(0.25, 0.25)
+theme_override_font_sizes/font_size = 100
+text = "Description:
+The Monster was last seen..
+He haunts people for....
+I am not a story writter..."

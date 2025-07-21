@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dm56u7qpm3gf1" path="res://assets/Light_Shadow.webp" id="4_dmgeq"]
 [ext_resource type="Texture2D" uid="uid://clygk5s0vu2ar" path="res://Player/testChar/hit_0.png" id="4_riufp"]
 [ext_resource type="Texture2D" uid="uid://lj4gdv6s1cls" path="res://Player/testChar/idle_1.png" id="5_4ots4"]
-[ext_resource type="Texture2D" uid="uid://pjee2k2q1rkr" path="res://assets/Blunderbuss side.png" id="5_gssft"]
+[ext_resource type="Texture2D" uid="uid://pjee2k2q1rkr" path="res://assets/gun_parts/Blunderbuss side.png" id="5_gssft"]
 [ext_resource type="Texture2D" uid="uid://b3jq6153a760h" path="res://Player/testChar/hit_1.png" id="5_inm8v"]
 [ext_resource type="Texture2D" uid="uid://2m2w8ervb5bw" path="res://Player/testChar/idle_2.png" id="6_5d85y"]
 [ext_resource type="Texture2D" uid="uid://dloa5nl3h636r" path="res://Player/testChar/hit_2.png" id="6_bxvjp"]
@@ -239,7 +239,7 @@ texture = ExtResource("4_dmgeq")
 position = Vector2(0, -92)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_i65me")
-animation = &"Hit"
+animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.5)
@@ -252,6 +252,8 @@ position_smoothing_speed = 10.0
 script = ExtResource("3_x474h")
 
 [node name="touch_sense" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="touch_sense"]

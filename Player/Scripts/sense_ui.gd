@@ -10,6 +10,15 @@ extends Control
 @onready var touch_b: Button = $Touch
 @onready var hear_b: Button = $Hear
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("1"):
+		sight_b.pressed.emit()
+	elif event.is_action_pressed("2"):
+		touch_b.pressed.emit()
+	elif event.is_action_pressed("3"):
+		hear_b.pressed.emit()
+
+
 
 func _ready() -> void:
 	update_ui()

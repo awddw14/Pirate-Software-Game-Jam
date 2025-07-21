@@ -23,10 +23,19 @@ offset_bottom = 520.0
 scale = Vector2(0.4, 0.4)
 mouse_filter = 1
 theme_override_font_sizes/font_size = 50
+button_mask = 0
 text = "
 "
 icon = ExtResource("2_xjo3x")
 icon_alignment = 1
+
+[node name="Label" type="Label" parent="Sight"]
+layout_mode = 0
+offset_left = 510.0
+offset_right = 567.0
+offset_bottom = 137.0
+theme_override_font_sizes/font_size = 100
+text = "1"
 
 [node name="Touch" type="Button" parent="."]
 layout_mode = 1
@@ -40,8 +49,17 @@ grow_horizontal = 2
 scale = Vector2(0.4, 0.4)
 mouse_filter = 1
 theme_override_font_sizes/font_size = 50
+button_mask = 0
 icon = ExtResource("3_g26je")
 icon_alignment = 1
+
+[node name="Label2" type="Label" parent="Touch"]
+layout_mode = 0
+offset_left = 460.0
+offset_right = 517.0
+offset_bottom = 137.0
+theme_override_font_sizes/font_size = 100
+text = "2"
 
 [node name="Hear" type="Button" parent="."]
 layout_mode = 1
@@ -55,8 +73,17 @@ grow_horizontal = 0
 scale = Vector2(0.4, 0.4)
 mouse_filter = 1
 theme_override_font_sizes/font_size = 50
+button_mask = 0
 icon = ExtResource("4_6pjo8")
 icon_alignment = 1
+
+[node name="Label3" type="Label" parent="Hear"]
+layout_mode = 0
+offset_left = 460.0
+offset_right = 517.0
+offset_bottom = 137.0
+theme_override_font_sizes/font_size = 100
+text = "3"
 
 [connection signal="pressed" from="Sight" to="." method="_on_sight_pressed"]
 [connection signal="pressed" from="Touch" to="." method="_on_touch_pressed"]
