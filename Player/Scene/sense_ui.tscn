@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjsx1gxvmgrcm"]
+[gd_scene load_steps=5 format=3 uid="uid://cjsx1gxvmgrcm"]
 
 [ext_resource type="Script" uid="uid://tt2gcmdfympa" path="res://Player/Scripts/sense_ui.gd" id="1_ypnme"]
+[ext_resource type="Texture2D" uid="uid://cftk6qe34s7h1" path="res://assets/Icons/eye-care.png" id="2_xjo3x"]
+[ext_resource type="Texture2D" uid="uid://brbitgx6w4vo7" path="res://assets/Icons/tap.png" id="3_g26je"]
+[ext_resource type="Texture2D" uid="uid://m6xrg83lrf8l" path="res://assets/Icons/auditory.png" id="4_6pjo8"]
 
 [node name="Sense_UI" type="Control"]
 layout_mode = 3
@@ -15,38 +18,45 @@ script = ExtResource("1_ypnme")
 
 [node name="Sight" type="Button" parent="."]
 layout_mode = 0
-offset_right = 150.0
-offset_bottom = 150.0
+offset_right = 570.0
+offset_bottom = 520.0
+scale = Vector2(0.4, 0.4)
 mouse_filter = 1
 theme_override_font_sizes/font_size = 50
-text = "Sight
+text = "
 "
+icon = ExtResource("2_xjo3x")
+icon_alignment = 1
 
 [node name="Touch" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -376.0
-offset_right = -221.0
-offset_bottom = 150.0
+offset_left = -278.0
+offset_right = 242.0
+offset_bottom = 520.0
 grow_horizontal = 2
+scale = Vector2(0.4, 0.4)
 mouse_filter = 1
 theme_override_font_sizes/font_size = 50
-text = "Touch"
+icon = ExtResource("3_g26je")
+icon_alignment = 1
 
 [node name="Hear" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -752.0
-offset_right = -602.0
-offset_bottom = 150.0
+offset_left = -576.0
+offset_right = -56.0
+offset_bottom = 520.0
 grow_horizontal = 0
+scale = Vector2(0.4, 0.4)
 mouse_filter = 1
 theme_override_font_sizes/font_size = 50
-text = "Hear"
+icon = ExtResource("4_6pjo8")
+icon_alignment = 1
 
 [connection signal="pressed" from="Sight" to="." method="_on_sight_pressed"]
 [connection signal="pressed" from="Touch" to="." method="_on_touch_pressed"]
