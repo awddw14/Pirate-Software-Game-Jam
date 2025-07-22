@@ -25,25 +25,25 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_oidb5")
 
-[node name="Magazine" type="Sprite2D" parent="."]
+[node name="magazine" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_l3v2c")
 position = Vector2(1090, 240)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_2cvwq")
 
-[node name="Ammobox" type="Sprite2D" parent="."]
+[node name="ammobox" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_l3v2c")
 position = Vector2(1090, 350)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_oidb5")
 
-[node name="Bullet" type="Sprite2D" parent="."]
+[node name="bullet" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_l3v2c")
 position = Vector2(1090, 435)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_6cjhb")
 
-[node name="Grenade" type="Sprite2D" parent="."]
+[node name="grenade" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_l3v2c")
 position = Vector2(1090, 505)
 scale = Vector2(0.4, 0.4)

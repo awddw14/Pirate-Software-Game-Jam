@@ -10,18 +10,26 @@ extends Control
 @onready var touch_b: Button = $Touch
 @onready var hear_b: Button = $Hear
 
+@onready var time_label: Label = $time_label
+
+var can_use_sense: bool = true
+
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("1"):
+	if event.is_action_pressed("1") and can_use_sense and not sight_b.disabled:
 		sight_b.pressed.emit()
-	elif event.is_action_pressed("2"):
+	elif event.is_action_pressed("2") and can_use_sense and not touch_b.disabled:
 		touch_b.pressed.emit()
-	elif event.is_action_pressed("3"):
+	elif event.is_action_pressed("3") and can_use_sense and not hear_b.disabled:
 		hear_b.pressed.emit()
-
-
 
 func _ready() -> void:
 	update_ui()
+	time_label.hide()
+
+func _process(_delta: float) -> void:
+	if not can_use_sense:
+		time_label.text = "Disabled: " + str(int($Timer.time_left))
+
 
 func _on_sight_pressed() -> void:
 	Global.current_sense = "Sight"
@@ -37,7 +45,10 @@ func _on_hear_pressed() -> void:
 	Global.current_sense = "Hear"
 	update_ui()
 
-
+func disable_sense():
+	time_label.show()
+	can_use_sense = false
+	$Timer.start()
 
 func update_ui():
 	player.update_sense()
@@ -62,3 +73,8 @@ func update_ui():
 		touch_b.disabled = false
 		sight_b.disabled = false
 		hear_b.disabled = false
+
+
+func _on_timer_timeout() -> void:
+	can_use_sense = true
+	time_label.hide()

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c6ws7wo3sbay7"]
+
+[node name="scratches" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 5.0
+offset_bottom = 40.0
+rotation = 0.785398
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 12.0
+offset_bottom = 47.0
+rotation = 0.785398
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 20.0
+offset_bottom = 55.0
+rotation = 0.785398

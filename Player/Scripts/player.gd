@@ -3,7 +3,7 @@ extends CharacterBody2D
 signal died
 
 @export var bullet_scene: PackedScene
-
+@export var world: Node2D
 var speed: float = 300.0
 var ammo: int = 1
 var gun_equip: bool = false
@@ -13,11 +13,11 @@ var gun_equip: bool = false
 @onready var weapon: Sprite2D = $weapon
 @onready var ap: AnimationPlayer = $ap
 @onready var anim: AnimatedSprite2D = $anim
-@onready var crosshair: Sprite2D = $Crosshair
 
 var is_sight: bool = false
 var target = null
 var crosshair_playing := false
+var hurt_count: int = 0
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot") and gun_equip:
@@ -37,12 +37,6 @@ func _process(_delta: float) -> void:
 		weapon.look_at(mouse_pos)
 		weapon.flip_v = mouse_pos.x < global_position.x
 		
-	if gun_equip and target != null:
-		crosshair.global_position = target.global_position
-		
-		if not crosshair_playing and target != null:
-			play_crosshair_anim()
-	
 	if Global.missed:
 		death()
 
@@ -82,26 +76,32 @@ func shoot():
 		add_child(b)
 		b.global_position = $weapon/pivot.global_position
 
+func take_damage():
+	if hurt_count == 0:
+		Global.current_sense = "Hear"
+		world.update()
+	elif hurt_count == 1:
+		Global.current_sense = "Hear"
+		world.update()
+	elif hurt_count == 2:
+		Global.current_sense = "Hear"
+		world.update()
+		death()
+	
+	hurt_count += 1
+
+
 func equip_weapon():
 	weapon.show()
 	gun_equip = true
 
-func play_crosshair_anim():
-	if not gun_equip or target == null:
-		return
-	crosshair_playing = true
-	crosshair.show()
-	ap.play("Crosshair_anim")
-	await ap.animation_finished
-	ap.play_backwards("Crosshair_anim")
-	await ap.animation_finished
-	crosshair_playing = false
 
 func death():
+	Global.missed = true
 	anim.play("death")
 	await anim.animation_finished
-	queue_free()
 	died.emit()
+	queue_free()
 
 func _on_touch_sense_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Monster"):
@@ -111,4 +111,3 @@ func _on_touch_sense_body_entered(body: Node2D) -> void:
 func _on_touch_sense_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Monster"):
 		Global.temp_change = ""
-		crosshair.hide()

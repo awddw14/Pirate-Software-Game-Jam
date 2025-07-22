@@ -1,14 +1,25 @@
 extends Node2D
 
+@export var player: CharacterBody2D
 
+@export var silver_bat: PackedScene
+@export var flying_specter: PackedScene
+@export var karen_centipede: PackedScene
 
 @onready var won: Label = $UI/won
 @onready var canvas_modulate: CanvasModulate = $CanvasModulate
 @onready var current_sense_label: Label = $UI/current_sense
-@onready var player: CharacterBody2D = $Player
+
+@onready var teleport_points: Node2D = $teleport_points
+
+var spawn_points: Array = ["spawn1", "spawn2", "spawn3", "spawn4"]
+
+var monster_pick: Array = ["silver_bat","flying_specter", "karen_centipede"]
 
 func _ready() -> void:
 	won.hide()
+	print(monster_pick)
+	choose_monster()
 
 func update_world_ui():
 	if current_sense_label != null:
@@ -36,10 +47,46 @@ func _process(_delta: float) -> void:
 	else:
 		canvas_modulate.color = Color(0.0, 0.0, 0.0, 1.0) #Color(0.15, 0.15, 0.15, 1.0)
 
+func update():
+	if player.hurt_count == 0:
+		$UI/Sense_UI.update_ui()
+		$UI/Sense_UI.disable_sense()
+		spawn_monster_new()
+	elif player.hurt_count == 1:
+		$UI/Gun_Inventory.steal_gun_part()
+		$UI/Sense_UI.update_ui()
+		$UI/Sense_UI.disable_sense()
+		spawn_monster_new()
 
+
+func spawn_monster_new():
+	var random_spawn = spawn_points.pick_random()
+	print(random_spawn)
+	for i in teleport_points.get_children():
+		if i.name == random_spawn:
+			for j in self.get_children():
+				if j.is_in_group("Monster"):
+					j.global_position = i.global_position
+
+func choose_monster():
+	var random_monster = monster_pick.pick_random()
+	print(random_monster)
+	if random_monster == "silver_bat":
+		var s = silver_bat.instantiate()
+		add_child(s)
+		spawn_monster_new()
+	elif random_monster == "flying_specter":
+		var f = flying_specter.instantiate()
+		add_child(f)
+		spawn_monster_new()
+	elif random_monster == "karen_centipede":
+		var k = karen_centipede.instantiate()
+		add_child(k)
+		spawn_monster_new()
 
 func _on_gun_inventory_all_parts() -> void:
-	$Player.equip_weapon()
+	if player:
+		player.equip_weapon()
 
 
 func _on_item_collected() -> void:
@@ -67,3 +114,12 @@ func _on_player_died() -> void:
 	$UI/Gun_Inventory.hide()
 	$UI/Sense_UI.hide()
 	$UI/Touch_Sense_UI.hide()
+
+
+func _on_retry_pressed() -> void:
+	Global.hit = false
+	Global.missed = false
+	Global.gun_parts_collected = []
+	Global.gun_parts_missing = []
+	Global.current_sense = ""
+	get_tree().change_scene_to_file("res://Main/Scene/world.tscn")

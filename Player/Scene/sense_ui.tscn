@@ -85,6 +85,20 @@ offset_bottom = 137.0
 theme_override_font_sizes/font_size = 100
 text = "3"
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="time_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -138.0
+offset_right = 933.0
+offset_bottom = -1.0
+theme_override_font_sizes/font_size = 100
+text = "Disabled: 99 "
+
 [connection signal="pressed" from="Sight" to="." method="_on_sight_pressed"]
 [connection signal="pressed" from="Touch" to="." method="_on_touch_pressed"]
 [connection signal="pressed" from="Hear" to="." method="_on_hear_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
