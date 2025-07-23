@@ -137,8 +137,8 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8juk"]
-size = Vector2(117, 119)
+[sub_resource type="CircleShape2D" id="CircleShape2D_riufp"]
+radius = 55.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x474h"]
 radius = 530.0
@@ -226,7 +226,7 @@ animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.5)
-shape = SubResource("RectangleShape2D_y8juk")
+shape = SubResource("CircleShape2D_riufp")
 
 [node name="cam" type="Camera2D" parent="."]
 zoom = Vector2(0.6, 0.6)
@@ -236,7 +236,7 @@ script = ExtResource("3_x474h")
 
 [node name="touch_sense" type="Area2D" parent="."]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 7
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="touch_sense"]

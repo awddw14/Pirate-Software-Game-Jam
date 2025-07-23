@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://ccetflehhcyu"]
 
-[ext_resource type="Script" uid="uid://cyw3rqxquxu81" path="res://Main/Scripts/Monster_scripts/silver_bat.gd" id="1_kr2bk"]
+[ext_resource type="Script" uid="uid://dqg6e5bfkgt5y" path="res://Main/Scripts/Monster_scripts/karen_centipede.gd" id="1_kr2bk"]
 [ext_resource type="Texture2D" uid="uid://clygk5s0vu2ar" path="res://Player/testChar/hit_0.png" id="2_ah1ll"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_leevy"]
-size = Vector2(75, 95)
+[sub_resource type="CircleShape2D" id="CircleShape2D_kr2bk"]
+radius = 40.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_lbp6c"]
 cull_mode = 1
@@ -14,15 +14,18 @@ polygon = PackedVector2Array(-37, 57.8, -37, 59.1, -71.2, 62, -78.3, 62, -117.1,
 radius = 70.0071
 
 [node name="KarenCentipede" type="CharacterBody2D" groups=["Monster"]]
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_kr2bk")
 monster_name = "KarenCentipede"
+env_temp = "hot"
 sight_visible = true
 sounds = true
-scratches = true
+move_speed = 450.0
 
 [node name="cs" type="CollisionShape2D" parent="."]
 position = Vector2(-3.5, 0.5)
-shape = SubResource("RectangleShape2D_leevy")
+shape = SubResource("CircleShape2D_kr2bk")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 position = Vector2(0, -63)
@@ -42,6 +45,18 @@ shape = SubResource("CircleShape2D_svm8m")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="nav_agent" type="NavigationAgent2D" parent="."]
+path_desired_distance = 5.0
+target_desired_distance = 5.0
+path_postprocessing = 1
+avoidance_enabled = true
+debug_enabled = true
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

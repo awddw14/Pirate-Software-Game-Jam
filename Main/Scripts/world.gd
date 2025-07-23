@@ -10,14 +10,19 @@ extends Node2D
 @onready var canvas_modulate: CanvasModulate = $CanvasModulate
 @onready var current_sense_label: Label = $UI/current_sense
 
+
+@onready var scratch: Node2D = $scratch
+
 @onready var teleport_points: Node2D = $teleport_points
 
 var spawn_points: Array = ["spawn1", "spawn2", "spawn3", "spawn4"]
 
 var monster_pick: Array = ["silver_bat","flying_specter", "karen_centipede"]
+var monster = null
 
 func _ready() -> void:
 	won.hide()
+	scratch.hide()
 	print(monster_pick)
 	choose_monster()
 
@@ -30,7 +35,7 @@ func _process(_delta: float) -> void:
 		Global.hit = false
 		won.text = "YOU WON"
 		won.show()
-		$MonsteAtrappe.queue_free()
+		monster.queue_free()
 		_on_player_died()
 		if Global.current_sense != "Sight":
 			Global.current_sense = "Sight"
@@ -58,6 +63,11 @@ func update():
 		$UI/Sense_UI.disable_sense()
 		spawn_monster_new()
 
+func scratches():
+	if monster:
+		if monster.scratches:
+			scratch.show()
+
 
 func spawn_monster_new():
 	var random_spawn = spawn_points.pick_random()
@@ -67,6 +77,7 @@ func spawn_monster_new():
 			for j in self.get_children():
 				if j.is_in_group("Monster"):
 					j.global_position = i.global_position
+					monster = j
 
 func choose_monster():
 	var random_monster = monster_pick.pick_random()
@@ -97,6 +108,7 @@ func _on_code_game_puzzle_solved() -> void:
 	$parts/magazine_item.show()
 	$UI/Code_Game.hide()
 	$code.queue_free()
+	scratches()
 
 
 func _on_code_area_body_entered(body: Node2D) -> void:

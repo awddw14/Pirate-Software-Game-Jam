@@ -1,8 +1,6 @@
 extends "res://Main/Scripts/Monster_scripts/MonsterBase.gd"
 
-
 @onready var nav_agent: NavigationAgent2D = $nav_agent
-
 
 
 func _physics_process(_delta: float) -> void:
@@ -13,7 +11,7 @@ func _physics_process(_delta: float) -> void:
 		var next_pos = nav_agent.get_next_path_position()
 		var direction = (next_pos - global_position).normalized()
 		velocity = direction * move_speed
-		move_and_slide()
+	move_and_slide()
 
 func make_path():
 	if player:
