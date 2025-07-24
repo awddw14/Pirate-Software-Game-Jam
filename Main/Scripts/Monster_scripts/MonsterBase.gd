@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var sounds: bool
 @export var scratches: bool
 @export var block_doors: bool
+@export var light_flick: bool
 @export var player: CharacterBody2D
 @export var move_speed: float = 200.0
 

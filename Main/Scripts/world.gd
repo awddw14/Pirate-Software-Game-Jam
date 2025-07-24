@@ -10,8 +10,11 @@ extends Node2D
 @onready var canvas_modulate: CanvasModulate = $CanvasModulate
 @onready var current_sense_label: Label = $UI/current_sense
 
+@onready var flickering_timer: Timer = $flickering_timer
+@onready var player_spawn_point: Marker2D = $SpawnPoint
 
 @onready var scratch: Node2D = $scratch
+@onready var lights: Node2D = $Lights
 
 @onready var teleport_points: Node2D = $teleport_points
 
@@ -67,7 +70,19 @@ func scratches():
 	if monster:
 		if monster.scratches:
 			scratch.show()
+		elif monster.light_flick:
+			flickering_timer.autostart = true
+			flickering_timer.start()
 
+func light_flickering(on: bool):
+	if monster:
+		if monster.light_flick:
+			if on:
+				for i in lights.get_children():
+					i.enabled = false
+			if !on:
+				for i in lights.get_children():
+					i.enabled = true
 
 func spawn_monster_new():
 	var random_spawn = spawn_points.pick_random()
@@ -135,3 +150,21 @@ func _on_retry_pressed() -> void:
 	Global.gun_parts_missing = []
 	Global.current_sense = ""
 	get_tree().change_scene_to_file("res://Main/Scene/world.tscn")
+
+
+func _on_flickering_timer_timeout() -> void:
+	light_flickering(true)
+	await get_tree().create_timer(0.2).timeout
+	light_flickering(false)
+	
+
+
+func _on_warm_colder_game_correct_statue_picked() -> void:
+	await get_tree().create_timer(1).timeout
+	if $WarmColderGame:
+		$WarmColderGame.queue_free()
+		$parts/bullet_item.show()
+
+
+func _on_warm_colder_game_wrong_statue_picked() -> void:
+	player.global_position = player_spawn_point.global_position

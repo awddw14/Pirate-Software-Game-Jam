@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://w0oq4ltku8q4"]
+[gd_scene load_steps=31 format=4 uid="uid://w0oq4ltku8q4"]
 
 [ext_resource type="Script" uid="uid://cf78yxghjh26e" path="res://Main/Scripts/world.gd" id="1_0ivwq"]
 [ext_resource type="PackedScene" uid="uid://cgqvjob73qmeq" path="res://Player/Scene/player.tscn" id="1_b8kj6"]
@@ -16,7 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://bvprk5w1whjoi" path="res://assets/gun_parts/magazine2.png" id="10_eknjm"]
 [ext_resource type="Texture2D" uid="uid://c7q8tqnil6nfn" path="res://assets/gun_parts/grenade.png" id="11_r246a"]
 [ext_resource type="Texture2D" uid="uid://c4v8t4558345m" path="res://icon.svg" id="13_r246a"]
+[ext_resource type="PackedScene" uid="uid://bminl27udyhid" path="res://Main/Scene/in_game_notes.tscn" id="15_ge7dy"]
 [ext_resource type="PackedScene" uid="uid://c6ws7wo3sbay7" path="res://Main/Scene/scratches.tscn" id="17_5bhyt"]
+[ext_resource type="PackedScene" uid="uid://hkluihm8jnrp" path="res://Main/Scene/lamp.tscn" id="18_p4nb0"]
+[ext_resource type="PackedScene" uid="uid://be138b6vp1h2r" path="res://Main/Scene/warm_colder_game.tscn" id="19_2spsx"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5bhyt"]
 vertices = PackedVector2Array(972, 1277, 2172, 1404, -1500, 1404, 572, 1277, 2172, -860, 972, 577, 740, 577, 740, 156, 444, 68, 476, 156, 476, 188, 444, 188, -316, -60, 444, 284, -316, 284, 444, -60, 476, 68, 476, 100, 740, 100, 740, -388, -1500, -860, -612, -388, -612, 612, 572, 612)
@@ -696,7 +699,19 @@ position = Vector2(394, 748)
 [node name="scratches3" parent="scratch" instance=ExtResource("17_5bhyt")]
 position = Vector2(-191, 878)
 
+[node name="Lights" type="Node2D" parent="."]
+
+[node name="Lamp" parent="Lights" instance=ExtResource("18_p4nb0")]
+position = Vector2(-336, 313)
+
+[node name="Lamp2" parent="Lights" instance=ExtResource("18_p4nb0")]
+position = Vector2(179, 564)
+
+[node name="WarmColderGame" parent="." instance=ExtResource("19_2spsx")]
+position = Vector2(-492, -790)
+
 [node name="Player" parent="." node_paths=PackedStringArray("world") instance=ExtResource("1_b8kj6")]
+position = Vector2(-123, 190)
 world = NodePath("..")
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -740,22 +755,30 @@ theme_override_font_sizes/font_size = 100
 text = "Current Sense selected:"
 
 [node name="Gun_Inventory" parent="UI" instance=ExtResource("5_aq6cu")]
-offset_left = 230.0
-offset_top = 47.0
-offset_right = 230.0
-offset_bottom = 47.0
-scale = Vector2(0.8, 0.8)
+offset_left = 457.0
+offset_top = 99.0
+offset_right = 457.0
+offset_bottom = 99.0
+scale = Vector2(0.6, 0.6)
 
 [node name="Sense_UI" parent="UI" instance=ExtResource("3_x3rxd")]
 offset_left = 432.0
 offset_top = 527.0
 offset_right = 432.0
 offset_bottom = 527.0
+scale = Vector2(0.4, 0.4)
 
 [node name="Code_Game" parent="UI" instance=ExtResource("7_vx3av")]
 visible = false
 offset_left = 315.0
 offset_right = 315.0
+
+[node name="InGameNotes" parent="UI" instance=ExtResource("15_ge7dy")]
+offset_left = 9.0
+offset_top = 590.0
+offset_right = -568.0
+offset_bottom = 7.0
+scale = Vector2(0.6, 0.6)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 
@@ -763,12 +786,14 @@ offset_right = 315.0
 position = Vector2(229, -51)
 
 [node name="ammobox_item" parent="parts" instance=ExtResource("7_rx81u")]
+visible = false
 position = Vector2(-1357, -664)
 icon = ExtResource("8_6y5d8")
 part_name = "ammobox"
 
 [node name="bullet_item" parent="parts" instance=ExtResource("7_rx81u")]
-position = Vector2(-1348, -461)
+visible = false
+position = Vector2(300, -756)
 icon = ExtResource("9_lbp6c")
 part_name = "bullet"
 
@@ -779,6 +804,7 @@ icon = ExtResource("10_eknjm")
 part_name = "magazine"
 
 [node name="grenade_item" parent="parts" instance=ExtResource("7_rx81u")]
+visible = false
 position = Vector2(-1120, -610)
 icon = ExtResource("11_r246a")
 part_name = "grenade"
@@ -819,11 +845,19 @@ position = Vector2(1827, -545)
 position = Vector2(1943, 1005)
 
 [node name="spawn3" type="Marker2D" parent="teleport_points"]
-position = Vector2(-673, -725)
+position = Vector2(-1574, 276)
 
 [node name="spawn4" type="Marker2D" parent="teleport_points"]
 position = Vector2(-1085, 1129)
 
+[node name="flickering_timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(11, 78)
+
+[connection signal="correct_statue_picked" from="WarmColderGame" to="." method="_on_warm_colder_game_correct_statue_picked"]
+[connection signal="wrong_statue_picked" from="WarmColderGame" to="." method="_on_warm_colder_game_wrong_statue_picked"]
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="pressed" from="UI/won/retry" to="." method="_on_retry_pressed"]
 [connection signal="all_parts" from="UI/Gun_Inventory" to="." method="_on_gun_inventory_all_parts"]
@@ -834,3 +868,4 @@ position = Vector2(-1085, 1129)
 [connection signal="collected" from="parts/grenade_item" to="." method="_on_item_collected"]
 [connection signal="body_entered" from="code/code_Area" to="." method="_on_code_area_body_entered"]
 [connection signal="body_exited" from="code/code_Area" to="." method="_on_code_area_body_exited"]
+[connection signal="timeout" from="flickering_timer" to="." method="_on_flickering_timer_timeout"]

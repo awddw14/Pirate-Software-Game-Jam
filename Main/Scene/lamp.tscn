@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://hkluihm8jnrp"]
+
+[ext_resource type="Texture2D" uid="uid://c4v8t4558345m" path="res://icon.svg" id="1_feev7"]
+[ext_resource type="Texture2D" uid="uid://dm56u7qpm3gf1" path="res://assets/Light_Shadow.webp" id="2_fyiht"]
+
+[node name="Lamp" type="PointLight2D"]
+scale = Vector2(3, 3)
+color = Color(0.501961, 0.501961, 0.501961, 1)
+energy = 0.6
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.0
+texture = ExtResource("2_fyiht")
+
+[node name="PointLight2D" type="Sprite2D" parent="."]
+show_behind_parent = true
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_feev7")

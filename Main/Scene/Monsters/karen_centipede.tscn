@@ -21,6 +21,7 @@ monster_name = "KarenCentipede"
 env_temp = "hot"
 sight_visible = true
 sounds = true
+light_flick = true
 move_speed = 450.0
 
 [node name="cs" type="CollisionShape2D" parent="."]

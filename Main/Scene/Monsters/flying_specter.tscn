@@ -18,6 +18,7 @@ script = ExtResource("1_50phl")
 monster_name = "FlyingSpecter"
 env_temp = "cold"
 block_doors = true
+light_flick = true
 move_speed = 0.0
 
 [node name="cs" type="CollisionShape2D" parent="."]
