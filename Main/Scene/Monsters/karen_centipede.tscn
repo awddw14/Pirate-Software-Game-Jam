@@ -21,6 +21,7 @@ monster_name = "KarenCentipede"
 env_temp = "hot"
 sight_visible = true
 sounds = true
+block_doors = true
 light_flick = true
 move_speed = 450.0
 

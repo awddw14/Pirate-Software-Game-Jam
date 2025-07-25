@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://w0oq4ltku8q4"]
+[gd_scene load_steps=34 format=4 uid="uid://w0oq4ltku8q4"]
 
 [ext_resource type="Script" uid="uid://cf78yxghjh26e" path="res://Main/Scripts/world.gd" id="1_0ivwq"]
 [ext_resource type="PackedScene" uid="uid://cgqvjob73qmeq" path="res://Player/Scene/player.tscn" id="1_b8kj6"]
@@ -17,9 +17,12 @@
 [ext_resource type="Texture2D" uid="uid://c7q8tqnil6nfn" path="res://assets/gun_parts/grenade.png" id="11_r246a"]
 [ext_resource type="Texture2D" uid="uid://c4v8t4558345m" path="res://icon.svg" id="13_r246a"]
 [ext_resource type="PackedScene" uid="uid://bminl27udyhid" path="res://Main/Scene/in_game_notes.tscn" id="15_ge7dy"]
+[ext_resource type="PackedScene" uid="uid://cy6r4nqv5cqrp" path="res://Main/Scene/monster_selection.tscn" id="16_s0ujw"]
 [ext_resource type="PackedScene" uid="uid://c6ws7wo3sbay7" path="res://Main/Scene/scratches.tscn" id="17_5bhyt"]
 [ext_resource type="PackedScene" uid="uid://hkluihm8jnrp" path="res://Main/Scene/lamp.tscn" id="18_p4nb0"]
 [ext_resource type="PackedScene" uid="uid://be138b6vp1h2r" path="res://Main/Scene/warm_colder_game.tscn" id="19_2spsx"]
+[ext_resource type="PackedScene" uid="uid://ci1p5msjty1kk" path="res://Main/Scene/final_selection_area.tscn" id="21_i0kyt"]
+[ext_resource type="PackedScene" uid="uid://dqdo0ki0rio1j" path="res://Main/Scene/way_blocker.tscn" id="23_jh5pj"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5bhyt"]
 vertices = PackedVector2Array(1284, 732, 860, 732, 740, 612, 740, 156, 2172, -860, 2172, 1404, 1284, 1404, 444, 68, 476, 156, 476, 188, 444, 188, -316, -60, 444, 284, -316, 284, 444, -60, 476, 68, 476, 100, 740, 100, 860, 1404, -1500, 1404, -612, 612, -1500, -860, -612, -388, 740, -388)
@@ -749,6 +752,7 @@ theme_override_font_sizes/font_size = 100
 text = "Retry"
 
 [node name="current_sense" type="Label" parent="UI"]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 scale = Vector2(0.3, 0.3)
@@ -781,6 +785,10 @@ offset_top = 590.0
 offset_right = -568.0
 offset_bottom = 7.0
 scale = Vector2(0.6, 0.6)
+
+[node name="MonsterSelection" parent="UI" node_paths=PackedStringArray("world") instance=ExtResource("16_s0ujw")]
+visible = false
+world = NodePath("../..")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 
@@ -858,12 +866,19 @@ wait_time = 0.5
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(11, 78)
 
+[node name="FinalSelectionArea" parent="." instance=ExtResource("21_i0kyt")]
+position = Vector2(406, 72)
+
+[node name="WayBlocker" parent="." instance=ExtResource("23_jh5pj")]
+position = Vector2(581, 255)
+
 [connection signal="correct_statue_picked" from="WarmColderGame" to="." method="_on_warm_colder_game_correct_statue_picked"]
 [connection signal="wrong_statue_picked" from="WarmColderGame" to="." method="_on_warm_colder_game_wrong_statue_picked"]
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="pressed" from="UI/won/retry" to="." method="_on_retry_pressed"]
 [connection signal="all_parts" from="UI/Gun_Inventory" to="." method="_on_gun_inventory_all_parts"]
 [connection signal="puzzle_solved" from="UI/Code_Game" to="." method="_on_code_game_puzzle_solved"]
+[connection signal="monster_selected" from="UI/MonsterSelection" to="." method="_on_monster_selection_monster_selected"]
 [connection signal="collected" from="parts/ammobox_item" to="." method="_on_item_collected"]
 [connection signal="collected" from="parts/bullet_item" to="." method="_on_item_collected"]
 [connection signal="collected" from="parts/magazine_item" to="." method="_on_item_collected"]
@@ -871,3 +886,7 @@ position = Vector2(11, 78)
 [connection signal="body_entered" from="code/code_Area" to="." method="_on_code_area_body_entered"]
 [connection signal="body_exited" from="code/code_Area" to="." method="_on_code_area_body_exited"]
 [connection signal="timeout" from="flickering_timer" to="." method="_on_flickering_timer_timeout"]
+[connection signal="body_entered" from="FinalSelectionArea/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="FinalSelectionArea/Area2D" to="." method="_on_area_2d_body_exited"]
+
+[editable path="FinalSelectionArea"]

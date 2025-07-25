@@ -26,8 +26,8 @@ func msg(text: String):
 
 func type_next_char():
 	if _char_index < _full_text.length():
-		if Global.current_sense == "Hear":
-			keyboard.play()
+		#if Global.current_sense == "Hear":
+		keyboard.play()
 		label.text += _full_text[_char_index]
 		_char_index += 1
 		await get_tree().create_timer(typing_speed).timeout

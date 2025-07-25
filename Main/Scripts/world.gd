@@ -68,15 +68,20 @@ func update():
 		$UI/Sense_UI.disable_sense()
 		spawn_monster_new()
 
+func write(text: String):
+	note.msg(text)
+
 func scratches():
 	if monster:
 		if monster.scratches:
 			scratch.show()
 			note.msg("What are these scratches everywhere")
-		elif monster.light_flick:
+		if monster.light_flick:
 			note.msg("Weird...someone is playing around with the electricity")
 			flickering_timer.autostart = true
 			flickering_timer.start()
+		if monster.block_doors: 
+			Global.block_the_door = true
 
 func light_flickering(on: bool):
 	if monster:
@@ -113,6 +118,7 @@ func choose_monster():
 		var k = karen_centipede.instantiate()
 		add_child(k)
 		spawn_monster_new()
+
 
 func _on_gun_inventory_all_parts() -> void:
 	if player:
@@ -160,7 +166,6 @@ func _on_flickering_timer_timeout() -> void:
 	light_flickering(true)
 	await get_tree().create_timer(0.2).timeout
 	light_flickering(false)
-	
 
 
 func _on_warm_colder_game_correct_statue_picked() -> void:
@@ -174,3 +179,22 @@ func _on_warm_colder_game_correct_statue_picked() -> void:
 func _on_warm_colder_game_wrong_statue_picked() -> void:
 	player.global_position = player_spawn_point.global_position
 	note.msg("Wrong statue....you need to focus")
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		if Global.monster_select == "":
+			$UI/MonsterSelection.show()
+			
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		if Global.monster_select == "":
+			$UI/MonsterSelection.hide()
+		else:
+			$FinalSelectionArea.queue_free()
+
+
+func _on_monster_selection_monster_selected() -> void:
+	$parts/ammobox_item.show()
