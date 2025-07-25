@@ -17,6 +17,8 @@ extends Node2D
 @onready var lights: Node2D = $Lights
 
 @onready var teleport_points: Node2D = $teleport_points
+@onready var note: Control = $UI/InGameNotes
+
 
 var spawn_points: Array = ["spawn1", "spawn2", "spawn3", "spawn4"]
 
@@ -70,7 +72,9 @@ func scratches():
 	if monster:
 		if monster.scratches:
 			scratch.show()
+			note.msg("What are these scratches everywhere")
 		elif monster.light_flick:
+			note.msg("Weird...someone is playing around with the electricity")
 			flickering_timer.autostart = true
 			flickering_timer.start()
 
@@ -162,9 +166,11 @@ func _on_flickering_timer_timeout() -> void:
 func _on_warm_colder_game_correct_statue_picked() -> void:
 	await get_tree().create_timer(1).timeout
 	if $WarmColderGame:
+		note.msg("Its getting cold around you.....")
 		$WarmColderGame.queue_free()
 		$parts/bullet_item.show()
 
 
 func _on_warm_colder_game_wrong_statue_picked() -> void:
 	player.global_position = player_spawn_point.global_position
+	note.msg("Wrong statue....you need to focus")

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="OneWayOut"
-run/main_scene="uid://w0oq4ltku8q4"
+run/main_scene="uid://bvgvfwus447or"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 

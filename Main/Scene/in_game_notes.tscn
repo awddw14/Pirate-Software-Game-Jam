@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bminl27udyhid"]
+[gd_scene load_steps=7 format=3 uid="uid://bminl27udyhid"]
 
 [ext_resource type="Script" uid="uid://8wl8aj10lgnr" path="res://Main/Scripts/in_game_notes.gd" id="1_ig6sc"]
+[ext_resource type="AudioStream" uid="uid://bab4v834lfu8h" path="res://assets/Sounds/keyboard-typing-5997.mp3" id="2_l26cl"]
 
 [sub_resource type="Animation" id="Animation_ig6sc"]
 resource_name = "Fade_in"
@@ -79,3 +80,7 @@ text = "Its getting cold around you....."
 libraries = {
 &"": SubResource("AnimationLibrary_4tng0")
 }
+
+[node name="keyboard" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_l26cl")
+volume_db = -2.0
