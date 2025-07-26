@@ -33,21 +33,25 @@ func _process(_delta: float) -> void:
 
 func _on_sight_pressed() -> void:
 	Global.current_sense = "Sight"
+	disable_sense(5)
 	update_ui()
 
 
 func _on_touch_pressed() -> void:
 	Global.current_sense = "Touch"
+	disable_sense(5)
 	update_ui()
 
 
 func _on_hear_pressed() -> void:
 	Global.current_sense = "Hear"
+	disable_sense(5)
 	update_ui()
 
-func disable_sense():
+func disable_sense(wait_time: int):
 	time_label.show()
 	can_use_sense = false
+	$Timer.wait_time = wait_time
 	$Timer.start()
 
 func update_ui():

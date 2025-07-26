@@ -31,4 +31,5 @@ func _on_select_pressed() -> void:
 			monster_selected.emit()
 			self.queue_free()
 	else :
+		self.hide()
 		world.write("Come back when you got 3 gun parts")

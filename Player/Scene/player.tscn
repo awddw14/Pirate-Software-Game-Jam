@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cgqvjob73qmeq"]
+[gd_scene load_steps=42 format=3 uid="uid://cgqvjob73qmeq"]
 
 [ext_resource type="Script" uid="uid://dvxdd6umpfhyb" path="res://Player/Scripts/player.gd" id="1_hoak5"]
 [ext_resource type="PackedScene" uid="uid://b6pq12fnvqmrl" path="res://Player/Scene/bullet.tscn" id="2_4qt7j"]
@@ -32,6 +32,9 @@
 [ext_resource type="Texture2D" uid="uid://dwpimb263g7h7" path="res://Player/testChar/death_7.png" id="25_stbtn"]
 [ext_resource type="Texture2D" uid="uid://cxw4ssqocueax" path="res://Player/testChar/death_8.png" id="26_52gs5"]
 [ext_resource type="Texture2D" uid="uid://dhbq2xevu15i3" path="res://Player/testChar/death_9.png" id="27_a0c8w"]
+[ext_resource type="AudioStream" uid="uid://bqx1hxu7gnben" path="res://assets/Sounds/walking-up-the-stairs-268464.mp3" id="33_inm8v"]
+[ext_resource type="AudioStream" uid="uid://gnl52vi58w5g" path="res://assets/Sounds/pistolshoot2-375684.mp3" id="34_bxvjp"]
+[ext_resource type="AudioStream" uid="uid://b1simadb080q6" path="res://assets/Sounds/roomtone-bedroom-small-quiet-6754.mp3" id="35_rcaao"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i65me"]
 animations = [{
@@ -253,6 +256,19 @@ position = Vector2(17, 0.5)
 libraries = {
 &"": SubResource("AnimationLibrary_w5akg")
 }
+
+[node name="WalkSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("33_inm8v")
+pitch_scale = 2.0
+parameters/looping = true
+
+[node name="ShotSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("34_bxvjp")
+pitch_scale = 2.0
+
+[node name="MuteSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("35_rcaao")
+parameters/looping = true
 
 [connection signal="body_entered" from="touch_sense" to="." method="_on_touch_sense_body_entered"]
 [connection signal="body_exited" from="touch_sense" to="." method="_on_touch_sense_body_exited"]

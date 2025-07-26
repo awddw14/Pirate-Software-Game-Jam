@@ -60,12 +60,12 @@ func _process(_delta: float) -> void:
 func update():
 	if player.hurt_count == 0:
 		$UI/Sense_UI.update_ui()
-		$UI/Sense_UI.disable_sense()
+		$UI/Sense_UI.disable_sense(10)
 		spawn_monster_new()
 	elif player.hurt_count == 1:
 		$UI/Gun_Inventory.steal_gun_part()
 		$UI/Sense_UI.update_ui()
-		$UI/Sense_UI.disable_sense()
+		$UI/Sense_UI.disable_sense(15)
 		spawn_monster_new()
 
 func write(text: String):
@@ -151,15 +151,13 @@ func _on_player_died() -> void:
 	$UI/Gun_Inventory.hide()
 	$UI/Sense_UI.hide()
 	$UI/Touch_Sense_UI.hide()
+	$UI/Code_Game.hide()
+	$UI/MonsterSelection.hide()
 
 
 func _on_retry_pressed() -> void:
-	Global.hit = false
-	Global.missed = false
-	Global.gun_parts_collected = []
-	Global.gun_parts_missing = []
-	Global.current_sense = ""
-	get_tree().change_scene_to_file("res://Main/Scene/world.tscn")
+	Global.reset()
+	get_tree().reload_current_scene()
 
 
 func _on_flickering_timer_timeout() -> void:
@@ -169,8 +167,8 @@ func _on_flickering_timer_timeout() -> void:
 
 
 func _on_warm_colder_game_correct_statue_picked() -> void:
-	await get_tree().create_timer(1).timeout
-	if $WarmColderGame:
+	await get_tree().create_timer(0.2).timeout
+	if $WarmColderGame != null:
 		note.msg("Its getting cold around you.....")
 		$WarmColderGame.queue_free()
 		$parts/bullet_item.show()

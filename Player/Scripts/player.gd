@@ -14,6 +14,10 @@ var gun_equip: bool = false
 @onready var ap: AnimationPlayer = $ap
 @onready var anim: AnimatedSprite2D = $anim
 
+@onready var walk_sound: AudioStreamPlayer2D = $WalkSound
+@onready var shot_sound: AudioStreamPlayer2D = $ShotSound
+@onready var mute_sound: AudioStreamPlayer2D = $MuteSound
+
 var is_sight: bool = false
 var target = null
 var crosshair_playing := false
@@ -46,12 +50,29 @@ func _physics_process(_delta: float) -> void:
 	if Global.missed == false:
 		if input_vector.x < 0 or input_vector.y < 0:
 			anim.flip_h = true
+			if !walk_sound.playing and Global.current_sense == "Hear":
+				mute_sound.stop()
+				walk_sound.play()
+			else:
+				if !Global.current_sense == "Hear" and !mute_sound.playing:
+					walk_sound.stop()
+					mute_sound.play()
 			anim.play("Walk")
 		elif input_vector.x > 0 or input_vector.y > 0:
 			anim.flip_h = false
+			if !walk_sound.playing and Global.current_sense == "Hear":
+				mute_sound.stop()
+				walk_sound.play()
+			else:
+				if !Global.current_sense == "Hear" and !mute_sound.playing:
+					walk_sound.stop()
+					mute_sound.play()
 			anim.play("Walk")
 		elif velocity == Vector2(0,0):
+			walk_sound.stop()
 			anim.play("Idle")
+	else :
+		velocity = Vector2(0,0)
 	move_and_slide()
 
 func update_sense():
@@ -71,6 +92,7 @@ func update_sense():
 
 func shoot():
 	if ammo != 0:
+		shot_sound.play()
 		ammo -= 1
 		var b = bullet_scene.instantiate()
 		add_child(b)
@@ -99,8 +121,8 @@ func equip_weapon():
 func death():
 	Global.missed = true
 	anim.play("death")
-	await anim.animation_finished
 	died.emit()
+	await anim.animation_finished
 	queue_free()
 
 func _on_touch_sense_body_entered(body: Node2D) -> void:

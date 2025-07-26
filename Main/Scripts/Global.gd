@@ -1,5 +1,17 @@
 extends Node
 
+
+func reset():
+	hit = false
+	missed = false
+	block_the_door = false
+	temp_change = ""
+	gun_parts_missing = []
+	gun_parts_collected = []
+	monster_select = ""
+	current_sense = ""
+
+
 var hit: bool = false
 var missed: bool = false
 var block_the_door: bool = false
