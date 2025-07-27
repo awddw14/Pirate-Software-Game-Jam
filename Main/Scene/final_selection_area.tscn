@@ -6,7 +6,7 @@
 size = Vector2(112, 114)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ut378"]
-radius = 174.011
+radius = 160.0
 
 [node name="FinalSelectionArea" type="CharacterBody2D"]
 
