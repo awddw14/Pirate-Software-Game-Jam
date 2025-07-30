@@ -2,7 +2,7 @@ extends Node2D
 
 @export var player: CharacterBody2D
 @warning_ignore("unused_signal")
-signal correct_statue_picked
+signal correct_statue_picked(box)
 @warning_ignore("unused_signal")
 signal wrong_statue_picked
 

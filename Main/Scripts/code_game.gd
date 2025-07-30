@@ -4,7 +4,7 @@ signal  puzzle_solved
 
 @onready var code_label: Label = $Code
 
-var code: int = 1234
+var code: int = 8357
 var prev_text: String = ""
 
 func _ready() -> void:

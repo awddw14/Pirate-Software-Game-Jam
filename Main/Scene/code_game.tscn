@@ -1,6 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://du70u5ltjl1xf"]
+[gd_scene load_steps=17 format=3 uid="uid://du70u5ltjl1xf"]
 
 [ext_resource type="Script" uid="uid://cpbu2ilokeyxq" path="res://Main/Scripts/code_game.gd" id="1_0j8d2"]
+[ext_resource type="Texture2D" uid="uid://b67gfi8yhi8gs" path="res://assets/Single PNGs/EMPTY1.png" id="2_3u58p"]
+[ext_resource type="Texture2D" uid="uid://b5yw1b4xj5mwi" path="res://assets/Single PNGs/1.png" id="2_ainh3"]
+[ext_resource type="Texture2D" uid="uid://rru1kp5u44dk" path="res://assets/Single PNGs/2.png" id="3_qsq51"]
+[ext_resource type="Texture2D" uid="uid://kum2r15k3k84" path="res://assets/Single PNGs/3.png" id="4_jj7wa"]
+[ext_resource type="Texture2D" uid="uid://du1io7eg1q61y" path="res://assets/Single PNGs/4.png" id="5_bsauf"]
+[ext_resource type="Texture2D" uid="uid://0a85vp71vk7n" path="res://assets/Single PNGs/5.png" id="6_ba7nh"]
+[ext_resource type="Texture2D" uid="uid://btpdh6gayiok7" path="res://assets/Single PNGs/6.png" id="7_rfi0p"]
+[ext_resource type="Texture2D" uid="uid://d0mky0007ujkq" path="res://assets/Single PNGs/7.png" id="8_ogh7i"]
+[ext_resource type="Texture2D" uid="uid://dmm5rjgpjcyfq" path="res://assets/Single PNGs/8.png" id="9_r21y2"]
+[ext_resource type="Texture2D" uid="uid://cb01hdrliisr1" path="res://assets/Single PNGs/9.png" id="10_8fpmt"]
+[ext_resource type="Texture2D" uid="uid://b7ftnvghwmgf" path="res://assets/Single PNGs/0.png" id="11_pegoa"]
+[ext_resource type="Texture2D" uid="uid://b66wr7vb14f1o" path="res://assets/Single PNGs/BACKSPACE.png" id="12_0yf74"]
+[ext_resource type="Texture2D" uid="uid://dgr52bb7yxq0d" path="res://assets/Single PNGs/ENTER.png" id="13_d4po5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3u58p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d4po5"]
 
 [node name="Code_Game" type="Control"]
 layout_mode = 3
@@ -18,21 +35,17 @@ script = ExtResource("1_0j8d2")
 
 [node name="Exit" type="Button" parent="."]
 layout_mode = 0
-offset_left = 566.0
+offset_left = 521.0
 offset_top = 89.0
-offset_right = 752.0
+offset_right = 707.0
 offset_bottom = 234.0
 scale = Vector2(0.8, 0.8)
-theme_override_font_sizes/font_size = 100
-text = "Exit"
-
-[node name="ColorRect" type="ColorRect" parent="Exit"]
-show_behind_parent = true
-layout_mode = 0
-offset_right = 186.0
-offset_bottom = 145.0
-mouse_filter = 1
-color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3u58p")
+text = "Esc"
+icon = ExtResource("2_3u58p")
+icon_alignment = 1
+expand_icon = true
 
 [node name="Code" type="Label" parent="."]
 layout_mode = 0
@@ -53,71 +66,113 @@ offset_bottom = 85.0
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 0
 offset_left = 33.0
-offset_top = 87.0
-offset_right = 236.0
-offset_bottom = 679.0
+offset_top = 93.0
+offset_right = 561.0
+offset_bottom = 685.0
 scale = Vector2(0.9, 0.9)
 columns = 3
 
 [node name="Button" type="Button" parent="GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
-text = "1"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d4po5")
+icon = ExtResource("2_ainh3")
+icon_alignment = 1
+expand_icon = true
 
 [node name="Button1" type="Button" parent="GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
-text = "2	"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d4po5")
+text = " "
+icon = ExtResource("3_qsq51")
+icon_alignment = 1
+expand_icon = true
 
 [node name="Button2" type="Button" parent="GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
-text = "3"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d4po5")
+icon = ExtResource("4_jj7wa")
+icon_alignment = 1
+expand_icon = true
 
 [node name="Button3" type="Button" parent="GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
-text = "4"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d4po5")
+icon = ExtResource("5_bsauf")
+icon_alignment = 1
+expand_icon = true
 
 [node name="Button4" type="Button" parent="GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
-text = "5"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d4po5")
+icon = ExtResource("6_ba7nh")
+icon_alignment = 1
+expand_icon = true
 
 [node name="Button5" type="Button" parent="GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
-text = "6"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d4po5")
+text = " "
+icon = ExtResource("7_rfi0p")
+icon_alignment = 1
+expand_icon = true
 
 [node name="Button6" type="Button" parent="GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
-text = "7"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d4po5")
+icon = ExtResource("8_ogh7i")
+icon_alignment = 1
+expand_icon = true
 
 [node name="Button7" type="Button" parent="GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
-text = "8"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d4po5")
+icon = ExtResource("9_r21y2")
+icon_alignment = 1
+expand_icon = true
 
 [node name="Button8" type="Button" parent="GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
-text = "9"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d4po5")
+text = " "
+icon = ExtResource("10_8fpmt")
+icon_alignment = 1
+expand_icon = true
 
 [node name="Button9" type="Button" parent="GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
-text = "  0  "
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d4po5")
+text = "      "
+icon = ExtResource("11_pegoa")
+icon_alignment = 1
+expand_icon = true
 
 [node name="delete" type="Button" parent="GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
-text = "  <   "
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d4po5")
+text = "       "
+icon = ExtResource("12_0yf74")
+icon_alignment = 1
+expand_icon = true
 
 [node name="submit" type="Button" parent="GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
-text = "   *   "
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d4po5")
+text = "       "
+icon = ExtResource("13_d4po5")
+icon_alignment = 1
+expand_icon = true
 
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="GridContainer/Button" to="." method="_on_button_0_pressed"]

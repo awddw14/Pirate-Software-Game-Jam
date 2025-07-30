@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwn38up23spxd"]
+
+[ext_resource type="Texture2D" uid="uid://cany0ejm36ck7" path="res://assets/evoli_assets/Monster_Walk.PNG" id="1_jw5e4"]
+
+[node name="Footsteps" type="Node2D"]
+
+[node name="MonsterWalk" type="Sprite2D" parent="."]
+texture = ExtResource("1_jw5e4")

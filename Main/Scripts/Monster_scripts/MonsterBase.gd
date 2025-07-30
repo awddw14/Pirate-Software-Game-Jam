@@ -7,8 +7,11 @@ extends CharacterBody2D
 @export var scratches: bool
 @export var block_doors: bool
 @export var light_flick: bool
+@export var footsteps: bool
 @export var player: CharacterBody2D
 @export var move_speed: float = 200.0
+
+@onready var anim: AnimatedSprite2D = $anim
 
 var chasing: bool = false
 
@@ -16,6 +19,7 @@ func _ready() -> void:
 	self.add_to_group("Monster")
 	hide()
 	get_player()
+	anim.play("Idle")
 
 func _process(_delta: float) -> void:
 	if Global.current_sense == "Sight" and sight_visible:

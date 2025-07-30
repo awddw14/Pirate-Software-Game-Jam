@@ -3,10 +3,10 @@ extends Control
 signal all_parts
 
 @onready var icon_dict := {
-	"magazine": $magazine,
-	"ammobox": $ammobox,
+	"frame": $frame,
+	"slide": $slide,
 	"bullet": $bullet,
-	"grenade": $grenade
+	"barrel": $barrel
 }
 
 

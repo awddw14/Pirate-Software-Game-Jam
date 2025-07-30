@@ -1,107 +1,87 @@
-[gd_scene load_steps=42 format=3 uid="uid://cgqvjob73qmeq"]
+[gd_scene load_steps=41 format=3 uid="uid://cgqvjob73qmeq"]
 
 [ext_resource type="Script" uid="uid://dvxdd6umpfhyb" path="res://Player/Scripts/player.gd" id="1_hoak5"]
 [ext_resource type="PackedScene" uid="uid://b6pq12fnvqmrl" path="res://Player/Scene/bullet.tscn" id="2_4qt7j"]
 [ext_resource type="Script" uid="uid://cogkldyyuq5js" path="res://Player/Scripts/cam.gd" id="3_x474h"]
-[ext_resource type="Texture2D" uid="uid://djlx3phk5622o" path="res://Player/testChar/idle_0.png" id="4_4qt7j"]
 [ext_resource type="Texture2D" uid="uid://dm56u7qpm3gf1" path="res://assets/Light_Shadow.webp" id="4_dmgeq"]
-[ext_resource type="Texture2D" uid="uid://clygk5s0vu2ar" path="res://Player/testChar/hit_0.png" id="4_riufp"]
-[ext_resource type="Texture2D" uid="uid://lj4gdv6s1cls" path="res://Player/testChar/idle_1.png" id="5_4ots4"]
-[ext_resource type="Texture2D" uid="uid://pjee2k2q1rkr" path="res://assets/gun_parts/Blunderbuss side.png" id="5_gssft"]
-[ext_resource type="Texture2D" uid="uid://b3jq6153a760h" path="res://Player/testChar/hit_1.png" id="5_inm8v"]
-[ext_resource type="Texture2D" uid="uid://2m2w8ervb5bw" path="res://Player/testChar/idle_2.png" id="6_5d85y"]
-[ext_resource type="Texture2D" uid="uid://dloa5nl3h636r" path="res://Player/testChar/hit_2.png" id="6_bxvjp"]
-[ext_resource type="Texture2D" uid="uid://cyc1365jh57yp" path="res://Player/testChar/idle_3.png" id="7_2uofi"]
-[ext_resource type="Texture2D" uid="uid://dsqmpk51brerp" path="res://Player/testChar/idle_4.png" id="8_4o78h"]
-[ext_resource type="Texture2D" uid="uid://bud6mwmm2a8cu" path="res://Player/testChar/idle_5.png" id="9_t32yo"]
-[ext_resource type="Texture2D" uid="uid://dm80jk7bni2kq" path="res://Player/testChar/walk_0.png" id="10_5k1jt"]
-[ext_resource type="Texture2D" uid="uid://c23jm0j7nhx56" path="res://Player/testChar/walk_1.png" id="11_7aolo"]
-[ext_resource type="Texture2D" uid="uid://bjxqjcoif1nbi" path="res://Player/testChar/walk_2.png" id="12_ly0lu"]
-[ext_resource type="Texture2D" uid="uid://dyq5iomwep4nh" path="res://Player/testChar/walk_3.png" id="13_riufp"]
-[ext_resource type="Texture2D" uid="uid://cbrj732od11r4" path="res://Player/testChar/walk_4.png" id="14_inm8v"]
-[ext_resource type="Texture2D" uid="uid://c76e7xu3kg3kk" path="res://Player/testChar/walk_5.png" id="15_bxvjp"]
-[ext_resource type="Texture2D" uid="uid://dmih1flkny8v6" path="res://Player/testChar/walk_6.png" id="16_rcaao"]
-[ext_resource type="Texture2D" uid="uid://yqiyg6sv7tln" path="res://Player/testChar/walk_7.png" id="17_m2w71"]
+[ext_resource type="Texture2D" uid="uid://c18vlqi2n0ist" path="res://assets/evoli_assets/walk.PNG" id="7_7aolo"]
+[ext_resource type="Texture2D" uid="uid://d2n484ifcyk5r" path="res://assets/evoli_assets/walk_down.PNG" id="15_m7g6d"]
+[ext_resource type="Texture2D" uid="uid://uouy7ov7252p" path="res://assets/evoli_assets/walk_up.PNG" id="16_a8uxe"]
+[ext_resource type="Texture2D" uid="uid://nxl78dc8244" path="res://assets/evoli_assets/GunFinal.PNG" id="18_m7g6d"]
 [ext_resource type="Texture2D" uid="uid://d3bi845ix70ph" path="res://Player/testChar/death_0.png" id="18_rf8ow"]
 [ext_resource type="Texture2D" uid="uid://bx7upob0cep70" path="res://Player/testChar/death_1.png" id="19_as8qq"]
+[ext_resource type="AudioStream" uid="uid://b2h0u50rq5js1" path="res://assets/Sounds/Player Footsteps test.wav" id="19_m7g6d"]
+[ext_resource type="AudioStream" uid="uid://bdelgrrb0bdgu" path="res://assets/Sounds/Gunshot.wav" id="20_m7g6d"]
 [ext_resource type="Texture2D" uid="uid://cgwh58a3f0no1" path="res://Player/testChar/death_2.png" id="20_uentx"]
 [ext_resource type="Texture2D" uid="uid://ct5vmougw7uuf" path="res://Player/testChar/death_3.png" id="21_bwm2q"]
+[ext_resource type="AudioStream" uid="uid://lliu2ofdjwd7" path="res://assets/Sounds/Sound going out, static.wav" id="21_m7g6d"]
 [ext_resource type="Texture2D" uid="uid://cxbkki7lddlkl" path="res://Player/testChar/death_4.png" id="22_3qg2r"]
 [ext_resource type="Texture2D" uid="uid://dordh8ntntnui" path="res://Player/testChar/death_5.png" id="23_30srp"]
 [ext_resource type="Texture2D" uid="uid://dwbfvnr7yurs" path="res://Player/testChar/death_6.png" id="24_s1pi1"]
 [ext_resource type="Texture2D" uid="uid://dwpimb263g7h7" path="res://Player/testChar/death_7.png" id="25_stbtn"]
 [ext_resource type="Texture2D" uid="uid://cxw4ssqocueax" path="res://Player/testChar/death_8.png" id="26_52gs5"]
 [ext_resource type="Texture2D" uid="uid://dhbq2xevu15i3" path="res://Player/testChar/death_9.png" id="27_a0c8w"]
-[ext_resource type="AudioStream" uid="uid://bqx1hxu7gnben" path="res://assets/Sounds/walking-up-the-stairs-268464.mp3" id="33_inm8v"]
-[ext_resource type="AudioStream" uid="uid://gnl52vi58w5g" path="res://assets/Sounds/pistolshoot2-375684.mp3" id="34_bxvjp"]
-[ext_resource type="AudioStream" uid="uid://b1simadb080q6" path="res://assets/Sounds/roomtone-bedroom-small-quiet-6754.mp3" id="35_rcaao"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ly0lu"]
+atlas = ExtResource("7_7aolo")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4the"]
+atlas = ExtResource("15_m7g6d")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jigc"]
+atlas = ExtResource("15_m7g6d")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cppvt"]
+atlas = ExtResource("15_m7g6d")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tx0w"]
+atlas = ExtResource("15_m7g6d")
+region = Rect2(600, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0a5q7"]
+atlas = ExtResource("7_7aolo")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcony"]
+atlas = ExtResource("7_7aolo")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5k1jt"]
+atlas = ExtResource("7_7aolo")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7aolo"]
+atlas = ExtResource("7_7aolo")
+region = Rect2(600, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_riufp"]
+atlas = ExtResource("16_a8uxe")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inm8v"]
+atlas = ExtResource("16_a8uxe")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxvjp"]
+atlas = ExtResource("16_a8uxe")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rcaao"]
+atlas = ExtResource("16_a8uxe")
+region = Rect2(600, 0, 200, 200)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i65me"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_riufp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_inm8v")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_bxvjp")
-}],
-"loop": false,
-"name": &"Hit",
-"speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_4qt7j")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_4ots4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_5d85y")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_2uofi")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_4o78h")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_t32yo")
+"texture": SubResource("AtlasTexture_ly0lu")
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("10_5k1jt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_7aolo")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_ly0lu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_riufp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_inm8v")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_bxvjp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_rcaao")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_m2w71")
-}],
-"loop": true,
-"name": &"Walk",
 "speed": 12.0
 }, {
 "frames": [{
@@ -137,6 +117,57 @@ animations = [{
 }],
 "loop": false,
 "name": &"death",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4the")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jigc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cppvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tx0w")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0a5q7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcony")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5k1jt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7aolo")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_riufp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inm8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxvjp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rcaao")
+}],
+"loop": true,
+"name": &"walk_up",
 "speed": 12.0
 }]
 
@@ -222,10 +253,9 @@ shadow_filter_smooth = 2.0
 texture = ExtResource("4_dmgeq")
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -92)
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_i65me")
-animation = &"Idle"
+animation = &"walk_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.5)
@@ -246,11 +276,12 @@ monitorable = false
 shape = SubResource("CircleShape2D_x474h")
 
 [node name="weapon" type="Sprite2D" parent="."]
-scale = Vector2(2.2, 2.2)
-texture = ExtResource("5_gssft")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("18_m7g6d")
+flip_h = true
 
 [node name="pivot" type="Marker2D" parent="weapon"]
-position = Vector2(17, 0.5)
+position = Vector2(60, -15)
 
 [node name="ap" type="AnimationPlayer" parent="."]
 libraries = {
@@ -258,17 +289,15 @@ libraries = {
 }
 
 [node name="WalkSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("33_inm8v")
-pitch_scale = 2.0
-parameters/looping = true
+stream = ExtResource("19_m7g6d")
 
 [node name="ShotSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("34_bxvjp")
+stream = ExtResource("20_m7g6d")
 pitch_scale = 2.0
 
 [node name="MuteSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("35_rcaao")
-parameters/looping = true
+stream = ExtResource("21_m7g6d")
+volume_db = -2.0
 
 [connection signal="body_entered" from="touch_sense" to="." method="_on_touch_sense_body_entered"]
 [connection signal="body_exited" from="touch_sense" to="." method="_on_touch_sense_body_exited"]

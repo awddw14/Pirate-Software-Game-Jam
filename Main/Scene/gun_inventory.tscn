@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://cvcgq6d6dlntw"]
 
-[ext_resource type="Texture2D" uid="uid://bvprk5w1whjoi" path="res://assets/gun_parts/magazine2.png" id="1_2cvwq"]
 [ext_resource type="Script" uid="uid://bmevk68pf1wx5" path="res://Main/Scripts/gun_inventory.gd" id="1_oidb5"]
-[ext_resource type="Texture2D" uid="uid://cxfvomce3remh" path="res://assets/gun_parts/ammobox.png" id="2_oidb5"]
 [ext_resource type="Shader" uid="uid://dmsey8ophmxsn" path="res://Main/Scripts/gun_parts.gdshader" id="2_r5qpx"]
-[ext_resource type="Texture2D" uid="uid://h3g4j2apfury" path="res://assets/gun_parts/small_bullet2.png" id="3_6cjhb"]
-[ext_resource type="Texture2D" uid="uid://c7q8tqnil6nfn" path="res://assets/gun_parts/grenade.png" id="5_6cjhb"]
+[ext_resource type="Texture2D" uid="uid://ftkxv54jh1ml" path="res://assets/evoli_assets/GunPart3_Frame.PNG" id="3_r5qpx"]
+[ext_resource type="Texture2D" uid="uid://d1vkmcw6jwh4v" path="res://assets/evoli_assets/GunPart1_Top.PNG" id="4_l3v2c"]
+[ext_resource type="Texture2D" uid="uid://yhqn4xd0j1wi" path="res://assets/evoli_assets/GunPart2_Barrel.PNG" id="5_532kf"]
+[ext_resource type="Texture2D" uid="uid://ijkgu6rpj1c4" path="res://assets/evoli_assets/GunBullet.PNG" id="6_r5qpx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l3v2c"]
 shader = ExtResource("2_r5qpx")
@@ -25,62 +25,54 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_oidb5")
 
-[node name="magazine" type="Sprite2D" parent="."]
+[node name="frame" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_l3v2c")
-position = Vector2(1090, 240)
+position = Vector2(1062, 575)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_2cvwq")
+texture = ExtResource("3_r5qpx")
 
-[node name="ammobox" type="Sprite2D" parent="."]
+[node name="slide" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_l3v2c")
-position = Vector2(1090, 350)
+position = Vector2(1125, 534)
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_oidb5")
+texture = ExtResource("4_l3v2c")
+
+[node name="barrel" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_l3v2c")
+position = Vector2(995, 534)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_532kf")
 
 [node name="bullet" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_l3v2c")
-position = Vector2(1090, 435)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_6cjhb")
-
-[node name="grenade" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_l3v2c")
-position = Vector2(1090, 505)
+position = Vector2(1002, 610)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("5_6cjhb")
+texture = ExtResource("6_r5qpx")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1018.0
-offset_top = 162.0
-offset_right = 1687.0
-offset_bottom = 299.0
+offset_left = 992.0
+offset_top = 455.0
+offset_right = 1661.0
+offset_bottom = 592.0
 scale = Vector2(0.2, 0.2)
 theme_override_font_sizes/font_size = 100
 text = "Missing Parts"
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = 1003.0
-offset_top = 144.0
-offset_right = 1149.0
-offset_bottom = 155.0
-mouse_filter = 1
-
 [node name="ColorRect3" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 1004.0
-offset_top = 541.0
-offset_right = 1150.0
-offset_bottom = 552.0
+offset_left = 952.0
+offset_top = 491.0
+offset_right = 1152.0
+offset_bottom = 502.0
 mouse_filter = 1
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 1003.0
-offset_top = 153.0
-offset_right = 1015.0
-offset_bottom = 552.0
+offset_left = 952.0
+offset_top = 497.0
+offset_right = 964.0
+offset_bottom = 647.0
 mouse_filter = 1
 
 [node name="Timer" type="Timer" parent="."]

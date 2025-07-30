@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cjsx1gxvmgrcm"]
 
 [ext_resource type="Script" uid="uid://tt2gcmdfympa" path="res://Player/Scripts/sense_ui.gd" id="1_ypnme"]
-[ext_resource type="Texture2D" uid="uid://cftk6qe34s7h1" path="res://assets/Icons/eye-care.png" id="2_xjo3x"]
+[ext_resource type="Texture2D" uid="uid://bmu1lancc4j4f" path="res://assets/evoli_assets/IMG_2704.PNG" id="2_g26je"]
 [ext_resource type="Texture2D" uid="uid://brbitgx6w4vo7" path="res://assets/Icons/tap.png" id="3_g26je"]
 [ext_resource type="Texture2D" uid="uid://m6xrg83lrf8l" path="res://assets/Icons/auditory.png" id="4_6pjo8"]
 
@@ -26,8 +26,9 @@ theme_override_font_sizes/font_size = 50
 button_mask = 0
 text = "
 "
-icon = ExtResource("2_xjo3x")
+icon = ExtResource("2_g26je")
 icon_alignment = 1
+expand_icon = true
 
 [node name="Label" type="Label" parent="Sight"]
 layout_mode = 0

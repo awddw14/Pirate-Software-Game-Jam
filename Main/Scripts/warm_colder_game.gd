@@ -16,7 +16,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot"):
 		can_pick_statue = false
 		if Global.temp_change == "hot":
-			manager.correct_statue_picked.emit()
+			manager.correct_statue_picked.emit(self)
 		elif Global.temp_change == "cold":
 			manager.wrong_statue_picked.emit()
 

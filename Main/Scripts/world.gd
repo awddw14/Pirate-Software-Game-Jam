@@ -15,6 +15,7 @@ extends Node2D
 
 @onready var scratch: Node2D = $scratch
 @onready var lights: Node2D = $Lights
+@onready var footstep: Node2D = $footstep
 
 @onready var teleport_points: Node2D = $teleport_points
 @onready var note: Control = $UI/InGameNotes
@@ -26,8 +27,13 @@ var monster_pick: Array = ["silver_bat","flying_specter", "karen_centipede"]
 var monster = null
 
 func _ready() -> void:
+	$parts/frame_item.hide()
+	$parts/bullet_item.hide()
+	$parts/barrel_item.hide()
+	$parts/slide_item.hide()
 	won.hide()
 	scratch.hide()
+	footstep.hide()
 	print(monster_pick)
 	choose_monster()
 
@@ -82,6 +88,9 @@ func scratches():
 			flickering_timer.start()
 		if monster.block_doors: 
 			Global.block_the_door = true
+		if monster.footsteps:
+			footstep.show()
+			note.msg("look closer to see monster evidence")
 
 func light_flickering(on: bool):
 	if monster:
@@ -130,7 +139,8 @@ func _on_item_collected() -> void:
 
 
 func _on_code_game_puzzle_solved() -> void:
-	$parts/magazine_item.show()
+	$parts/barrel_item.show()
+	$parts/barrel_item.global_position = $code/Marker2D.global_position
 	$UI/Code_Game.hide()
 	$code.queue_free()
 	scratches()
@@ -166,24 +176,16 @@ func _on_flickering_timer_timeout() -> void:
 	light_flickering(false)
 
 
-func _on_warm_colder_game_correct_statue_picked() -> void:
-	await get_tree().create_timer(0.2).timeout
-	if $WarmColderGame != null:
-		note.msg("Its getting cold around you.....")
-		$WarmColderGame.queue_free()
-		$parts/bullet_item.show()
-
 
 func _on_warm_colder_game_wrong_statue_picked() -> void:
 	player.global_position = player_spawn_point.global_position
-	note.msg("Wrong statue....you need to focus")
+	note.msg("Wrong box....you need to focus")
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		if Global.monster_select == "":
 			$UI/MonsterSelection.show()
-			
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
@@ -195,4 +197,14 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 
 func _on_monster_selection_monster_selected() -> void:
-	$parts/ammobox_item.show()
+	$parts/bullet_item.show()
+	$parts/bullet_item.global_position = $bullet_spawn.global_position
+
+
+func _on_warm_colder_game_correct_statue_picked(box: Variant) -> void:
+	await get_tree().create_timer(0.2).timeout
+	if $WarmColderGame != null:
+		note.msg("Its getting cold around you.....")
+		$parts/slide_item.show()
+		$parts/slide_item.global_position = box.global_position
+		$WarmColderGame.queue_free()

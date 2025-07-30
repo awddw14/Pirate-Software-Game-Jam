@@ -34,6 +34,7 @@ func _ready() -> void:
 	light.scale = Vector2(2,2)
 	weapon.hide()
 	self.add_to_group("Player")
+	mute_sound.play()
 
 func _process(_delta: float) -> void:
 	if gun_equip:
@@ -45,35 +46,39 @@ func _process(_delta: float) -> void:
 		death()
 
 func _physics_process(_delta: float) -> void:
-	var input_vector: Vector2 = Vector2(Input.get_axis("move_left", "move_right"),Input.get_axis("move_up", "move_down")).normalized()
+	var input_vector := Vector2(
+		Input.get_axis("move_left", "move_right"),
+		Input.get_axis("move_up", "move_down")
+	).normalized()
+
 	velocity = input_vector * speed
+
 	if Global.missed == false:
-		if input_vector.x < 0 or input_vector.y < 0:
-			anim.flip_h = true
-			if !walk_sound.playing and Global.current_sense == "Hear":
-				mute_sound.stop()
-				walk_sound.play()
+		if input_vector != Vector2.ZERO:
+			if Global.current_sense == "Hear":
+				if !walk_sound.playing:
+					mute_sound.stop()
+					walk_sound.play()
 			else:
-				if !Global.current_sense == "Hear" and !mute_sound.playing:
+				if !mute_sound.playing:
 					walk_sound.stop()
 					mute_sound.play()
-			anim.play("Walk")
-		elif input_vector.x > 0 or input_vector.y > 0:
-			anim.flip_h = false
-			if !walk_sound.playing and Global.current_sense == "Hear":
-				mute_sound.stop()
-				walk_sound.play()
-			else:
-				if !Global.current_sense == "Hear" and !mute_sound.playing:
-					walk_sound.stop()
-					mute_sound.play()
-			anim.play("Walk")
-		elif velocity == Vector2(0,0):
-			walk_sound.stop()
+
+			if abs(input_vector.x) > abs(input_vector.y):
+				anim.flip_h = input_vector.x > 0
+				anim.play("walk_left")
+			elif input_vector.y < 0:
+				anim.play("walk_up")
+			elif input_vector.y > 0:
+				anim.play("walk_down")
+		else:
 			anim.play("Idle")
-	else :
-		velocity = Vector2(0,0)
+			walk_sound.stop()
+	else:
+		velocity = Vector2.ZERO
+
 	move_and_slide()
+
 
 func update_sense():
 	if Global.current_sense == "Sight":

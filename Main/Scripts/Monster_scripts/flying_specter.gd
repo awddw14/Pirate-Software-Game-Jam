@@ -11,7 +11,11 @@ func _physics_process(_delta: float) -> void:
 		var next_pos = nav_agent.get_next_path_position()
 		var direction = (next_pos - global_position).normalized()
 		velocity = direction * move_speed
+	else:
+		velocity = Vector2.ZERO
+
 	move_and_slide()
+
 
 func make_path():
 	if player:
