@@ -9,18 +9,18 @@ signal monster_selected
 var current_select: String = ""
 
 func _on_monster_1_pressed() -> void:
-	current_select = "Flying specter"
+	current_select = "Yawnmaur"
 	label.text = "Current selection: " + current_select
 	
 
 
 func _on_monster_3_pressed() -> void:
-	current_select = "Silver bat"
+	current_select = "Moldag"
 	label.text = "Current selection: " + current_select
 
 
 func _on_monster_2_pressed() -> void:
-	current_select = "Karen centipede"
+	current_select = "Skritterskit"
 	label.text = "Current selection: " + current_select
 
 

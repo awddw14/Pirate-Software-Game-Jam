@@ -5,7 +5,7 @@ extends Control
 @export var typing_speed: float = 0.05
 
 @onready var ap: AnimationPlayer = $ap
-@onready var keyboard: AudioStreamPlayer2D = $keyboard
+@onready var keyboard: AudioStreamPlayer = $keyboard
 @onready var label: Label = $Label
 
 var _full_text: String = ""

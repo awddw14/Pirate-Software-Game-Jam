@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://clvgxsgdjyv5l"
+path="res://.godot/imported/Cafe abiance.wav-bf026fb70c44e5a2b0d3c28b2d9a6ae4.sample"
+
+[deps]
+
+source_file="res://assets/music/Cafe abiance.wav"
+dest_files=["res://.godot/imported/Cafe abiance.wav-bf026fb70c44e5a2b0d3c28b2d9a6ae4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

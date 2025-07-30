@@ -1,7 +1,90 @@
-[gd_scene load_steps=3 format=3 uid="uid://clmobkyvnafmo"]
+[gd_scene load_steps=23 format=3 uid="uid://clmobkyvnafmo"]
 
 [ext_resource type="Script" uid="uid://b5sfbgui4g47f" path="res://Main/Scripts/monster_book.gd" id="1_y1klk"]
-[ext_resource type="Texture2D" uid="uid://c4v8t4558345m" path="res://icon.svg" id="2_a04o5"]
+[ext_resource type="Texture2D" uid="uid://c21shlc1m42wr" path="res://assets/Book/Animated/Book1.png" id="3_0qrbv"]
+[ext_resource type="Texture2D" uid="uid://b46gj2m16565b" path="res://assets/Book/Book.png" id="3_d5lda"]
+[ext_resource type="Texture2D" uid="uid://dcrro87sm7fjx" path="res://assets/Book/Animated/Book2.png" id="4_d5lda"]
+[ext_resource type="Texture2D" uid="uid://bpxdea8307h6h" path="res://assets/Book/Animated/Book3.png" id="5_vdhr5"]
+[ext_resource type="Texture2D" uid="uid://dyylifo8mkpkw" path="res://assets/Book/Animated/Book4.png" id="6_kc33g"]
+[ext_resource type="Texture2D" uid="uid://7kyvtefirrg7" path="res://assets/Book/Animated/Book5.png" id="7_t0ubg"]
+[ext_resource type="Texture2D" uid="uid://wl3hs63ehwri" path="res://assets/Book/Animated/Book6.png" id="8_cctxq"]
+[ext_resource type="Texture2D" uid="uid://cpnu53y7xxyp8" path="res://assets/Book/Animated/Book7.png" id="9_8rccf"]
+[ext_resource type="Texture2D" uid="uid://d1hbgs4u5doyx" path="res://assets/Book/Animated/Book8.png" id="10_ei20q"]
+[ext_resource type="Texture2D" uid="uid://c247gid2cf3v8" path="res://assets/Book/Animated/Book9.png" id="11_8coqn"]
+[ext_resource type="Texture2D" uid="uid://bp030npq24v2q" path="res://assets/Book/Animated/Book10.png" id="12_ikavs"]
+[ext_resource type="Texture2D" uid="uid://1wvlf2x2ly1y" path="res://assets/Book/Animated/Book11.png" id="13_gdk5m"]
+[ext_resource type="Texture2D" uid="uid://cf5gq5ty7pcgu" path="res://assets/Book/Animated/Book12.png" id="14_w2aby"]
+[ext_resource type="Texture2D" uid="uid://dswaodfedobxd" path="res://assets/Book/Animated/Book13.png" id="15_u2w3l"]
+[ext_resource type="Texture2D" uid="uid://dhaa05nu6sd14" path="res://assets/Book/Animated/Book14.png" id="16_5rtfa"]
+[ext_resource type="Texture2D" uid="uid://b4qra25jibfgr" path="res://assets/Book/Animated/Book15.png" id="17_xy6g1"]
+[ext_resource type="Texture2D" uid="uid://b1g8rrtirmogh" path="res://assets/Book/Animated/Book16.png" id="18_6qdqb"]
+[ext_resource type="Texture2D" uid="uid://cd8hndkdchqar" path="res://assets/monsters_no_statue/Monster_bat.PNG" id="19_kc33g"]
+[ext_resource type="Texture2D" uid="uid://dafppwfl2k6d" path="res://assets/monsters_no_statue/Monster_Centipede.PNG" id="20_kc33g"]
+[ext_resource type="Texture2D" uid="uid://bbssrbaevb3uo" path="res://assets/monsters_no_statue/Monster_Wraith.PNG" id="21_kc33g"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a04o5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_d5lda")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_0qrbv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_d5lda")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vdhr5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kc33g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_t0ubg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_cctxq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8rccf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ei20q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_8coqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ikavs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_gdk5m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_w2aby")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_u2w3l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_5rtfa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_xy6g1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_6qdqb")
+}],
+"loop": false,
+"name": &"NextPage",
+"speed": 15.0
+}]
 
 [node name="MonsterBook" type="Control"]
 layout_mode = 3
@@ -10,68 +93,245 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_y1klk")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -280.0
-offset_right = 280.0
-offset_bottom = 560.0
-grow_horizontal = 2
-color = Color(0.901961, 0.745098, 0, 1)
+[node name="anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(549, 128)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_a04o5")
+animation = &"NextPage"
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(757, 140)
-texture = ExtResource("2_a04o5")
+[node name="Page1" type="Node2D" parent="."]
+visible = false
+position = Vector2(0, 16)
+scale = Vector2(0.9, 0.9)
 
-[node name="Pic" type="Label" parent="Icon"]
-self_modulate = Color(0, 0, 1, 1)
-offset_left = -45.0
-offset_top = -98.0
-offset_right = 297.0
-offset_bottom = 39.0
+[node name="Icon" type="Sprite2D" parent="Page1"]
+position = Vector2(802.222, 316.667)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("19_kc33g")
+
+[node name="Pic" type="Label" parent="Page1/Icon"]
+self_modulate = Color(0, 0, 0, 1)
+offset_left = -206.667
+offset_top = -448.889
+offset_right = 384.333
+offset_bottom = -311.889
+scale = Vector2(0.8, 0.8)
+theme_override_font_sizes/font_size = 100
+text = "Rare picture"
+
+[node name="Name" type="Label" parent="Page1"]
+self_modulate = Color(0, 0, 0, 1)
+offset_left = 244.444
+offset_top = 68.8889
+offset_right = 1157.44
+offset_bottom = 205.889
 scale = Vector2(0.25, 0.25)
 theme_override_font_sizes/font_size = 100
-text = "Picture"
+text = "Name: Moldag"
 
-[node name="Name" type="Label" parent="."]
-self_modulate = Color(1, 0, 0, 1)
-layout_mode = 0
-offset_left = 454.0
-offset_top = 1.0
-offset_right = 1367.0
-offset_bottom = 138.0
-scale = Vector2(0.25, 0.25)
-theme_override_font_sizes/font_size = 100
-text = "Name: Placeholder"
-
-[node name="Facts" type="Label" parent="."]
+[node name="Facts" type="Label" parent="Page1"]
 self_modulate = Color(0, 0.564706, 0, 1)
-layout_mode = 0
-offset_left = 305.0
-offset_top = 221.0
-offset_right = 1782.0
-offset_bottom = 781.0
+offset_left = 247.778
+offset_top = 120.0
+offset_right = 1724.78
+offset_bottom = 680.0
 scale = Vector2(0.25, 0.25)
 theme_override_font_sizes/font_size = 100
 text = "Typical behavior:
-- Loud Footsteps, 
-- light flickering, 
-- cold enviroment"
+- Scratches, 
+- cold enviroment
+- no footprints at all
+- quiet noises"
 
-[node name="description" type="Label" parent="."]
+[node name="description" type="Label" parent="Page1"]
 self_modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_left = 307.0
-offset_top = 362.0
-offset_right = 1639.0
-offset_bottom = 919.0
+offset_left = 247.778
+offset_top = 308.889
+offset_right = 1579.78
+offset_bottom = 865.889
 scale = Vector2(0.25, 0.25)
 theme_override_font_sizes/font_size = 100
 text = "Description:
-The Monster was last seen..
-He haunts people for....
-I am not a story writter..."
+The Moldag (sees) and prey
+ on any incoming...."
+
+[node name="Page2" type="Node2D" parent="."]
+visible = false
+position = Vector2(0, 16)
+scale = Vector2(0.9, 0.9)
+
+[node name="Icon" type="Sprite2D" parent="Page2"]
+position = Vector2(802.222, 316.667)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("20_kc33g")
+
+[node name="Pic" type="Label" parent="Page2/Icon"]
+self_modulate = Color(0, 0, 0, 1)
+offset_left = -206.667
+offset_top = -448.889
+offset_right = 385.333
+offset_bottom = -311.889
+scale = Vector2(0.8, 0.8)
+theme_override_font_sizes/font_size = 100
+text = "Rare picture"
+
+[node name="Name" type="Label" parent="Page2"]
+self_modulate = Color(0, 0, 0, 1)
+offset_left = 238.889
+offset_top = 68.8889
+offset_right = 1151.88
+offset_bottom = 205.889
+scale = Vector2(0.25, 0.25)
+theme_override_font_sizes/font_size = 100
+text = "Name: Skritterskit"
+
+[node name="Facts" type="Label" parent="Page2"]
+self_modulate = Color(0, 0.564706, 0, 1)
+offset_left = 235.556
+offset_top = 120.0
+offset_right = 1712.56
+offset_bottom = 817.0
+scale = Vector2(0.25, 0.25)
+theme_override_font_sizes/font_size = 100
+text = "Typical behavior:
+- likes to block doors, 
+- hot enviroment
+- chewing on cables
+- leaves footprints"
+
+[node name="description" type="Label" parent="Page2"]
+self_modulate = Color(0, 0, 0, 1)
+offset_left = 232.222
+offset_top = 313.333
+offset_right = 2299.22
+offset_bottom = 1010.33
+scale = Vector2(0.25, 0.25)
+theme_override_font_sizes/font_size = 100
+text = "Description:
+long dark body and hundreds
+of legs it to hear....
+"
+
+[node name="Page3" type="Node2D" parent="."]
+visible = false
+position = Vector2(0, 16)
+scale = Vector2(0.9, 0.9)
+
+[node name="Icon" type="Sprite2D" parent="Page3"]
+position = Vector2(802.222, 316.667)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("21_kc33g")
+
+[node name="Pic" type="Label" parent="Page3/Icon"]
+self_modulate = Color(0, 0, 0, 1)
+offset_left = -206.667
+offset_top = -448.889
+offset_right = 384.333
+offset_bottom = -311.889
+scale = Vector2(0.8, 0.8)
+theme_override_font_sizes/font_size = 100
+text = "Rare picture"
+
+[node name="Name" type="Label" parent="Page3"]
+self_modulate = Color(0, 0, 0, 1)
+offset_left = 244.444
+offset_top = 68.8889
+offset_right = 1157.44
+offset_bottom = 205.889
+scale = Vector2(0.25, 0.25)
+theme_override_font_sizes/font_size = 100
+text = "Name: Yawnmaur"
+
+[node name="Facts" type="Label" parent="Page3"]
+self_modulate = Color(0, 0.564706, 0, 1)
+offset_left = 247.778
+offset_top = 120.0
+offset_right = 1724.78
+offset_bottom = 680.0
+scale = Vector2(0.25, 0.25)
+theme_override_font_sizes/font_size = 100
+text = "Typical behavior:
+- likes to block doors, 
+- cold enviroment
+- chewing on cables
+- no footprints at all"
+
+[node name="description" type="Label" parent="Page3"]
+self_modulate = Color(0, 0, 0, 1)
+offset_left = 247.778
+offset_top = 306.667
+offset_right = 1579.78
+offset_bottom = 863.667
+scale = Vector2(0.25, 0.25)
+theme_override_font_sizes/font_size = 100
+text = "Description:
+When old memories and 
+past joys become too 
+painful to touch..."
+
+[node name="Page4" type="Node2D" parent="."]
+position = Vector2(0, 16)
+scale = Vector2(0.9, 0.9)
+
+[node name="Name" type="Label" parent="Page4"]
+self_modulate = Color(0, 0, 0, 1)
+offset_left = 244.444
+offset_top = 68.8889
+offset_right = 1157.44
+offset_bottom = 205.889
+scale = Vector2(0.25, 0.25)
+theme_override_font_sizes/font_size = 100
+text = "Avi, my sweet-pea
+
+It’s been too long since we 
+spoke, I know. It’s gotten 
+harder these days - I’m an 
+old lady now, with eyes and 
+ears that barely see or hear, 
+and hands that shake. I 
+terribly miss hearing your 
+voice on the phone, and
+ reading your letters."
+
+[node name="Name2" type="Label" parent="Page4"]
+self_modulate = Color(0, 0, 0, 1)
+offset_left = 655.556
+offset_top = 91.1111
+offset_right = 2038.56
+offset_bottom = 1628.11
+scale = Vector2(0.25, 0.25)
+theme_override_font_sizes/font_size = 100
+text = "dear i won't be long, and if
+you come by, make sure to
+(clean) this place... 
+remember dear you will 
+have but 
+one chance and one bullet, 
+you need to trust your gut 
+and this book.
+
+With love to our Avi,
+Julie and Luis"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 505.0
+offset_top = 530.0
+offset_right = 598.0
+offset_bottom = 561.0
+text = "Close book"
+
+[node name="next_page" type="Button" parent="."]
+layout_mode = 0
+offset_left = 635.0
+offset_top = 531.0
+offset_right = 733.0
+offset_bottom = 562.0
+text = "next page >"
+
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="next_page" to="." method="_on_next_page_pressed"]

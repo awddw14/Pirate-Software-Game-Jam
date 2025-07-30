@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cy6r4nqv5cqrp"]
+[gd_scene load_steps=9 format=3 uid="uid://cy6r4nqv5cqrp"]
 
-[ext_resource type="Texture2D" uid="uid://c4v8t4558345m" path="res://icon.svg" id="1_5lxpy"]
 [ext_resource type="Script" uid="uid://iwq38h5psqgs" path="res://Main/Scripts/monster_selection.gd" id="1_gy23r"]
 [ext_resource type="Texture2D" uid="uid://brbitgx6w4vo7" path="res://assets/Icons/tap.png" id="2_dhfix"]
+[ext_resource type="Texture2D" uid="uid://bmehgiaoondwh" path="res://assets/evoli_assets/Statue_Touch.PNG" id="2_vyeny"]
+[ext_resource type="Texture2D" uid="uid://21xbd7kybxgw" path="res://assets/evoli_assets/Statue_Sight.PNG" id="4_nb1bh"]
+[ext_resource type="Texture2D" uid="uid://bx45caat0kcot" path="res://assets/evoli_assets/Statue_Bat.PNG" id="5_3qm8c"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gy23r"]
 modulate_color = Color(1, 1, 1, 0)
@@ -21,12 +23,18 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_gy23r")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 647.0
+color = Color(1, 1, 1, 0.0588235)
+
 [node name="Monster3" type="Button" parent="."]
 layout_mode = 1
-offset_left = 10.0
+offset_left = 48.0
 offset_top = 10.0
-offset_right = 266.0
-offset_bottom = 266.0
+offset_right = 304.0
+offset_bottom = 288.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_gy23r")
 
 [node name="TextureRect3" type="TextureRect" parent="Monster3"]
@@ -34,14 +42,15 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -254.0
-offset_right = 2.0
-offset_bottom = 256.0
+offset_left = -203.0
+offset_right = 53.0
+offset_bottom = 555.0
 grow_horizontal = 0
-texture = ExtResource("1_5lxpy")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_vyeny")
 
 [node name="Tap3" type="Sprite2D" parent="Monster3/TextureRect3"]
-position = Vector2(154, 150)
+position = Vector2(176, 308)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_dhfix")
 
@@ -50,10 +59,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -128.0
-offset_top = 10.0
-offset_right = 128.0
-offset_bottom = 266.0
+offset_left = -126.0
+offset_top = 20.0
+offset_right = 130.0
+offset_bottom = 281.0
 grow_horizontal = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_vyeny")
 
@@ -62,14 +71,16 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -254.0
-offset_right = 2.0
-offset_bottom = 256.0
+offset_left = -277.0
+offset_top = -7.0
+offset_right = 178.0
+offset_bottom = 527.0
 grow_horizontal = 0
-texture = ExtResource("1_5lxpy")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_nb1bh")
 
 [node name="Tap3" type="Sprite2D" parent="Monster2/TextureRect3"]
-position = Vector2(154, 150)
+position = Vector2(242, 296)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_dhfix")
 
@@ -78,10 +89,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -262.0
-offset_top = 10.0
-offset_right = -6.0
-offset_bottom = 266.0
+offset_left = -379.0
+offset_top = 5.0
+offset_right = -123.0
+offset_bottom = 296.0
 grow_horizontal = 0
 theme_override_styles/normal = SubResource("StyleBoxTexture_nb1bh")
 
@@ -90,14 +101,16 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -254.0
-offset_right = 2.0
-offset_bottom = 256.0
+offset_left = -182.0
+offset_top = -6.0
+offset_right = 190.0
+offset_bottom = 586.0
 grow_horizontal = 0
-texture = ExtResource("1_5lxpy")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_3qm8c")
 
 [node name="Tap3" type="Sprite2D" parent="Monster1/TextureRect3"]
-position = Vector2(154, 150)
+position = Vector2(226, 368)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_dhfix")
 
@@ -109,9 +122,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -114.0
-offset_top = -144.0
+offset_top = -152.0
 offset_right = 181.0
-offset_bottom = 1.0
+offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.8, 0.8)

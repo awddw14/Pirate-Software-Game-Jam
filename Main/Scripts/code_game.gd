@@ -3,6 +3,8 @@ extends Control
 signal  puzzle_solved
 
 @onready var code_label: Label = $Code
+@onready var click: AudioStreamPlayer = $click
+
 
 var code: int = 8357
 var prev_text: String = ""
@@ -13,6 +15,7 @@ func _ready() -> void:
 
 
 func write(text: String):
+	click.play()
 	if code_label.text.length() >= 4:
 		return
 	$Code/ColorRect.self_modulate = Color(0.0,0.0,1.0)
@@ -60,11 +63,13 @@ func _on_button_9_pressed() -> void:
 
 
 func _on_delete_pressed() -> void:
+	click.play()
 	if code_label.text.length() > 0:
 		code_label.text = code_label.text.substr(0, code_label.text.length() - 1)
 
 
 func _on_submit_pressed() -> void:
+	click.play()
 	if code_label.text == str(code):
 		$Code/ColorRect.self_modulate = Color(0.0,1.0,0.0)
 		await get_tree().create_timer(1).timeout
@@ -77,4 +82,5 @@ func _on_submit_pressed() -> void:
 
 
 func _on_exit_pressed() -> void:
+	click.play()
 	self.hide()

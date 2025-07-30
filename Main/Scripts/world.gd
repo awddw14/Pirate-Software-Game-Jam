@@ -25,6 +25,7 @@ var spawn_points: Array = ["spawn1", "spawn2", "spawn3", "spawn4"]
 
 var monster_pick: Array = ["silver_bat","flying_specter", "karen_centipede"]
 var monster = null
+var two_gun: bool = false
 
 func _ready() -> void:
 	$parts/frame_item.hide()
@@ -34,6 +35,7 @@ func _ready() -> void:
 	won.hide()
 	scratch.hide()
 	footstep.hide()
+	$UI/book.hide()
 	print(monster_pick)
 	choose_monster()
 
@@ -42,6 +44,20 @@ func update_world_ui():
 		current_sense_label.text = "Current Sense selected: " + Global.current_sense
 
 func _process(_delta: float) -> void:
+	
+	if Global.gun_parts_collected.size() > 1 and !two_gun:
+		two_gun = true
+		$parts/frame_item.global_position = $frame_spawn.global_position
+		$parts/frame_item.show()
+	
+	
+	if Global.current_sense == "Sight":
+		$"Furniture/83".show()
+		$"Furniture/57".show()
+	else:
+		$"Furniture/83".hide()
+		$"Furniture/57".hide()
+	
 	if Global.hit:
 		Global.hit = false
 		won.text = "YOU WON"
@@ -79,6 +95,7 @@ func write(text: String):
 
 func scratches():
 	if monster:
+		monster.make_noise()
 		if monster.scratches:
 			scratch.show()
 			note.msg("What are these scratches everywhere")
@@ -86,6 +103,7 @@ func scratches():
 			note.msg("Weird...someone is playing around with the electricity")
 			flickering_timer.autostart = true
 			flickering_timer.start()
+			$light_humming.play()
 		if monster.block_doors: 
 			Global.block_the_door = true
 		if monster.footsteps:
@@ -132,6 +150,7 @@ func choose_monster():
 func _on_gun_inventory_all_parts() -> void:
 	if player:
 		player.equip_weapon()
+		note.msg("you got only one shot...dont miss it !")
 
 
 func _on_item_collected() -> void:
@@ -162,7 +181,9 @@ func _on_player_died() -> void:
 	$UI/Sense_UI.hide()
 	$UI/Touch_Sense_UI.hide()
 	$UI/Code_Game.hide()
-	$UI/MonsterSelection.hide()
+	$death_music.play()
+	$UI/InGameMenu.hide()
+	$UI/menu.hide()
 
 
 func _on_retry_pressed() -> void:
@@ -193,7 +214,9 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		if Global.monster_select == "":
 			$UI/MonsterSelection.hide()
 		else:
-			$FinalSelectionArea.queue_free()
+			if $parts/bullet_item != null : 
+				$parts/bullet_item.global_position = $bullet_spawn.global_position
+				$FinalSelectionArea.queue_free()
 
 
 func _on_monster_selection_monster_selected() -> void:
@@ -208,3 +231,21 @@ func _on_warm_colder_game_correct_statue_picked(box: Variant) -> void:
 		$parts/slide_item.show()
 		$parts/slide_item.global_position = box.global_position
 		$WarmColderGame.queue_free()
+
+
+func _on_book_pressed() -> void:
+	$UI/MonsterBook.show()
+	$UI/Sense_UI.hide()
+	Global.current_sense = "Touch"
+	$UI/Sense_UI.update_ui()
+
+
+func _on_menu_pressed() -> void:
+	$UI/InGameMenu.show()
+
+
+func _on_book_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		$UI/book.show()
+		note.msg("Strange that she left this out.  Her vision must have gone too bad.")
+		$IconBook.queue_free()

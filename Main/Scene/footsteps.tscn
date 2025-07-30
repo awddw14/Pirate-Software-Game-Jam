@@ -1,8 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://dwn38up23spxd"]
+[gd_scene load_steps=4 format=3 uid="uid://dwn38up23spxd"]
 
 [ext_resource type="Texture2D" uid="uid://cany0ejm36ck7" path="res://assets/evoli_assets/Monster_Walk.PNG" id="1_jw5e4"]
+[ext_resource type="Shader" uid="uid://dmsey8ophmxsn" path="res://Main/Scripts/gun_parts.gdshader" id="1_vptnj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tclnn"]
+shader = ExtResource("1_vptnj")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 2.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 
 [node name="Footsteps" type="Node2D"]
 
 [node name="MonsterWalk" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_tclnn")
 texture = ExtResource("1_jw5e4")

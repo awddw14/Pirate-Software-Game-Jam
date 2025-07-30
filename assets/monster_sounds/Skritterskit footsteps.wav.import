@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cuaj47n2jbhff"
+path="res://.godot/imported/Skritterskit footsteps.wav-36b14a91180ef16beac974cd3877ca72.sample"
+
+[deps]
+
+source_file="res://assets/monster_sounds/Skritterskit footsteps.wav"
+dest_files=["res://.godot/imported/Skritterskit footsteps.wav-36b14a91180ef16beac974cd3877ca72.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

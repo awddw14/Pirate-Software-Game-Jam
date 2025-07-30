@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://du70u5ltjl1xf"]
+[gd_scene load_steps=18 format=3 uid="uid://du70u5ltjl1xf"]
 
 [ext_resource type="Script" uid="uid://cpbu2ilokeyxq" path="res://Main/Scripts/code_game.gd" id="1_0j8d2"]
 [ext_resource type="Texture2D" uid="uid://b67gfi8yhi8gs" path="res://assets/Single PNGs/EMPTY1.png" id="2_3u58p"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://b7ftnvghwmgf" path="res://assets/Single PNGs/0.png" id="11_pegoa"]
 [ext_resource type="Texture2D" uid="uid://b66wr7vb14f1o" path="res://assets/Single PNGs/BACKSPACE.png" id="12_0yf74"]
 [ext_resource type="Texture2D" uid="uid://dgr52bb7yxq0d" path="res://assets/Single PNGs/ENTER.png" id="13_d4po5"]
+[ext_resource type="AudioStream" uid="uid://icehjcfihioc" path="res://assets/Sounds/Interaction sound.wav" id="15_06hko"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3u58p"]
 
@@ -173,6 +174,11 @@ text = "       "
 icon = ExtResource("13_d4po5")
 icon_alignment = 1
 expand_icon = true
+
+[node name="click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_06hko")
+volume_db = -2.0
+pitch_scale = 3.0
 
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="GridContainer/Button" to="." method="_on_button_0_pressed"]

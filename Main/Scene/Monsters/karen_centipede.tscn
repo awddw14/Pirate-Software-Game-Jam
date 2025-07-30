@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://ccetflehhcyu"]
+[gd_scene load_steps=13 format=3 uid="uid://ccetflehhcyu"]
 
 [ext_resource type="Script" uid="uid://dqg6e5bfkgt5y" path="res://Main/Scripts/Monster_scripts/karen_centipede.gd" id="1_kr2bk"]
 [ext_resource type="Texture2D" uid="uid://clygk5s0vu2ar" path="res://Player/testChar/hit_0.png" id="2_ah1ll"]
 [ext_resource type="Texture2D" uid="uid://devl15msfckhl" path="res://assets/evoli_assets/IMG_2714.PNG" id="3_ah1ll"]
+[ext_resource type="AudioStream" uid="uid://cuaj47n2jbhff" path="res://assets/monster_sounds/Skritterskit footsteps.wav" id="4_lpwep"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kr2bk"]
 radius = 40.0
@@ -58,7 +59,6 @@ script = ExtResource("1_kr2bk")
 monster_name = "KarenCentipede"
 env_temp = "hot"
 sight_visible = true
-sounds = true
 block_doors = true
 light_flick = true
 footsteps = true
@@ -98,6 +98,9 @@ avoidance_enabled = true
 [node name="anim" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lpwep")
 animation = &"Idle"
+
+[node name="monster_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_lpwep")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]

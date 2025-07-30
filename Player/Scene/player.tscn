@@ -1,30 +1,41 @@
-[gd_scene load_steps=41 format=3 uid="uid://cgqvjob73qmeq"]
+[gd_scene load_steps=37 format=3 uid="uid://cgqvjob73qmeq"]
 
 [ext_resource type="Script" uid="uid://dvxdd6umpfhyb" path="res://Player/Scripts/player.gd" id="1_hoak5"]
 [ext_resource type="PackedScene" uid="uid://b6pq12fnvqmrl" path="res://Player/Scene/bullet.tscn" id="2_4qt7j"]
 [ext_resource type="Script" uid="uid://cogkldyyuq5js" path="res://Player/Scripts/cam.gd" id="3_x474h"]
 [ext_resource type="Texture2D" uid="uid://dm56u7qpm3gf1" path="res://assets/Light_Shadow.webp" id="4_dmgeq"]
+[ext_resource type="Texture2D" uid="uid://bfgkmweo4nebl" path="res://assets/evoli_assets/MCAnimation_Death.PNG" id="5_5d85y"]
 [ext_resource type="Texture2D" uid="uid://c18vlqi2n0ist" path="res://assets/evoli_assets/walk.PNG" id="7_7aolo"]
 [ext_resource type="Texture2D" uid="uid://d2n484ifcyk5r" path="res://assets/evoli_assets/walk_down.PNG" id="15_m7g6d"]
 [ext_resource type="Texture2D" uid="uid://uouy7ov7252p" path="res://assets/evoli_assets/walk_up.PNG" id="16_a8uxe"]
 [ext_resource type="Texture2D" uid="uid://nxl78dc8244" path="res://assets/evoli_assets/GunFinal.PNG" id="18_m7g6d"]
-[ext_resource type="Texture2D" uid="uid://d3bi845ix70ph" path="res://Player/testChar/death_0.png" id="18_rf8ow"]
-[ext_resource type="Texture2D" uid="uid://bx7upob0cep70" path="res://Player/testChar/death_1.png" id="19_as8qq"]
 [ext_resource type="AudioStream" uid="uid://b2h0u50rq5js1" path="res://assets/Sounds/Player Footsteps test.wav" id="19_m7g6d"]
 [ext_resource type="AudioStream" uid="uid://bdelgrrb0bdgu" path="res://assets/Sounds/Gunshot.wav" id="20_m7g6d"]
-[ext_resource type="Texture2D" uid="uid://cgwh58a3f0no1" path="res://Player/testChar/death_2.png" id="20_uentx"]
-[ext_resource type="Texture2D" uid="uid://ct5vmougw7uuf" path="res://Player/testChar/death_3.png" id="21_bwm2q"]
 [ext_resource type="AudioStream" uid="uid://lliu2ofdjwd7" path="res://assets/Sounds/Sound going out, static.wav" id="21_m7g6d"]
-[ext_resource type="Texture2D" uid="uid://cxbkki7lddlkl" path="res://Player/testChar/death_4.png" id="22_3qg2r"]
-[ext_resource type="Texture2D" uid="uid://dordh8ntntnui" path="res://Player/testChar/death_5.png" id="23_30srp"]
-[ext_resource type="Texture2D" uid="uid://dwbfvnr7yurs" path="res://Player/testChar/death_6.png" id="24_s1pi1"]
-[ext_resource type="Texture2D" uid="uid://dwpimb263g7h7" path="res://Player/testChar/death_7.png" id="25_stbtn"]
-[ext_resource type="Texture2D" uid="uid://cxw4ssqocueax" path="res://Player/testChar/death_8.png" id="26_52gs5"]
-[ext_resource type="Texture2D" uid="uid://dhbq2xevu15i3" path="res://Player/testChar/death_9.png" id="27_a0c8w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ly0lu"]
 atlas = ExtResource("7_7aolo")
 region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2uofi"]
+atlas = ExtResource("5_5d85y")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t32yo"]
+atlas = ExtResource("5_5d85y")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4o78h"]
+atlas = ExtResource("5_5d85y")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i65me"]
+atlas = ExtResource("5_5d85y")
+region = Rect2(600, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wakke"]
+atlas = ExtResource("5_5d85y")
+region = Rect2(800, 0, 200, 200)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t4the"]
 atlas = ExtResource("15_m7g6d")
@@ -86,38 +97,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("18_rf8ow")
+"texture": SubResource("AtlasTexture_2uofi")
 }, {
 "duration": 1.0,
-"texture": ExtResource("19_as8qq")
+"texture": SubResource("AtlasTexture_t32yo")
 }, {
 "duration": 1.0,
-"texture": ExtResource("20_uentx")
+"texture": SubResource("AtlasTexture_4o78h")
 }, {
 "duration": 1.0,
-"texture": ExtResource("21_bwm2q")
+"texture": SubResource("AtlasTexture_i65me")
 }, {
 "duration": 1.0,
-"texture": ExtResource("22_3qg2r")
-}, {
-"duration": 1.0,
-"texture": ExtResource("23_30srp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("24_s1pi1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("25_stbtn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("26_52gs5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("27_a0c8w")
+"texture": SubResource("AtlasTexture_wakke")
 }],
 "loop": false,
 "name": &"death",
-"speed": 12.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -255,7 +251,9 @@ texture = ExtResource("4_dmgeq")
 [node name="anim" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_i65me")
-animation = &"walk_down"
+animation = &"death"
+frame = 4
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.5)

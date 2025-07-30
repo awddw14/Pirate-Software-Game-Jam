@@ -12,6 +12,9 @@ extends Control
 
 @onready var time_label: Label = $time_label
 
+@onready var using_sight: AudioStreamPlayer = $using_sight
+@onready var using_touch: AudioStreamPlayer = $using_touch
+
 var can_use_sense: bool = true
 
 func _input(event: InputEvent) -> void:
@@ -33,12 +36,16 @@ func _process(_delta: float) -> void:
 
 func _on_sight_pressed() -> void:
 	Global.current_sense = "Sight"
+	#using_touch.stop()
+	#using_sight.play()
 	disable_sense(5)
 	update_ui()
 
 
 func _on_touch_pressed() -> void:
 	Global.current_sense = "Touch"
+	#using_touch.play()
+	#using_sight.stop()
 	disable_sense(5)
 	update_ui()
 

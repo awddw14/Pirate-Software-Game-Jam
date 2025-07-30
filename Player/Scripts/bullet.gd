@@ -16,6 +16,8 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Monster"):
 		Global.hit = true
+		if body.monster_name != Global.monster_select:
+			get_parent().death()
 		queue_free()
 
 

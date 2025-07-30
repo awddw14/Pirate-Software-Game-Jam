@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://1a5gogpt640x"]
+[gd_scene load_steps=13 format=3 uid="uid://1a5gogpt640x"]
 
 [ext_resource type="Script" uid="uid://djxpyxvtq63c3" path="res://Main/Scripts/Monster_scripts/silver_bat.gd" id="1_do051"]
 [ext_resource type="Texture2D" uid="uid://clygk5s0vu2ar" path="res://Player/testChar/hit_0.png" id="2_d1h5q"]
 [ext_resource type="Texture2D" uid="uid://devl15msfckhl" path="res://assets/evoli_assets/IMG_2714.PNG" id="3_d1h5q"]
+[ext_resource type="AudioStream" uid="uid://dissmqhcpyyki" path="res://assets/monster_sounds/Moldag.wav" id="4_3jmwd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_do051"]
 radius = 40.0
@@ -58,7 +59,6 @@ script = ExtResource("1_do051")
 monster_name = "SilverBat"
 env_temp = "cold"
 sight_visible = true
-sounds = true
 scratches = true
 move_speed = 300.0
 
@@ -97,6 +97,9 @@ avoidance_enabled = true
 sprite_frames = SubResource("SpriteFrames_3jmwd")
 animation = &"Idle"
 frame_progress = 0.488181
+
+[node name="monster_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_3jmwd")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]

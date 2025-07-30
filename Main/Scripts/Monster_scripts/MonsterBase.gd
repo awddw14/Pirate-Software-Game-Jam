@@ -3,7 +3,6 @@ extends CharacterBody2D
 @export var monster_name: String
 @export var env_temp: String
 @export var sight_visible: bool
-@export var sounds: bool
 @export var scratches: bool
 @export var block_doors: bool
 @export var light_flick: bool
@@ -12,6 +11,7 @@ extends CharacterBody2D
 @export var move_speed: float = 200.0
 
 @onready var anim: AnimatedSprite2D = $anim
+@onready var monster_sound: AudioStreamPlayer = $monster_sound
 
 var chasing: bool = false
 
@@ -30,8 +30,7 @@ func _process(_delta: float) -> void:
 		hide()
 
 func make_noise():
-	if sounds:
-		print("Screaming sounds")
+	monster_sound.play()
 
 func get_player():
 	var player1 = get_parent().get_children()
