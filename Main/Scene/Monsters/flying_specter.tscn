@@ -53,7 +53,7 @@ animations = [{
 [node name="FlyingSpecter" type="CharacterBody2D" groups=["Monster"]]
 scale = Vector2(0.8, 0.8)
 script = ExtResource("1_50phl")
-monster_name = "FlyingSpecter"
+monster_name = "Moldag"
 env_temp = "cold"
 sight_visible = true
 block_doors = true

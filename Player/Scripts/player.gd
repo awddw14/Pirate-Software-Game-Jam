@@ -27,8 +27,6 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot") and gun_equip:
 		shoot()
 		cam.apply_shake()
-	if event.is_action_pressed("ui_down"):
-		equip_weapon()
 
 func _ready() -> void:
 	light.scale = Vector2(2,2)

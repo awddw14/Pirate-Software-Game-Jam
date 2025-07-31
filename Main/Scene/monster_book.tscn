@@ -130,7 +130,8 @@ offset_right = 1157.44
 offset_bottom = 205.889
 scale = Vector2(0.25, 0.25)
 theme_override_font_sizes/font_size = 100
-text = "Name: Moldag"
+text = "Name: Yawnmaur
+"
 
 [node name="Facts" type="Label" parent="Page1"]
 self_modulate = Color(0, 0.564706, 0, 1)
@@ -216,7 +217,6 @@ of legs it to hear....
 "
 
 [node name="Page3" type="Node2D" parent="."]
-visible = false
 position = Vector2(0, 16)
 scale = Vector2(0.9, 0.9)
 
@@ -243,7 +243,7 @@ offset_right = 1157.44
 offset_bottom = 205.889
 scale = Vector2(0.25, 0.25)
 theme_override_font_sizes/font_size = 100
-text = "Name: Yawnmaur"
+text = "Name: Moldag"
 
 [node name="Facts" type="Label" parent="Page3"]
 self_modulate = Color(0, 0.564706, 0, 1)
@@ -273,6 +273,7 @@ past joys become too
 painful to touch..."
 
 [node name="Page4" type="Node2D" parent="."]
+visible = false
 position = Vector2(0, 16)
 scale = Vector2(0.9, 0.9)
 
